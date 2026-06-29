@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | ArchStruct Design Firm</title>
+    <meta name="description"
+        content="Explore ArchStruct's comprehensive architectural and structural engineering services including design, 3D visualization, project management and our client portal.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/luxury.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+<style>
+        /* ═══════════════════════════════════════════════════
+           HOME 2 — PREMIUM MOBILE / TABLET NAV (≤ 1024px)
+           Desktop (> 1024px) is 100% untouched.
+        ═══════════════════════════════════════════════════ */
+        @media (max-width: 1023px) {
+
+            /* ── Footer-style logo in the main header navbar ── */
+            header.header .logo {
+                display: flex !important;
+                align-items: center !important;
+                gap: 0.6rem !important;
+                text-decoration: none !important;
+            }
+
+            header.header .logo .logo-icon {
+                font-size: 2rem !important;
+                color: var(--navy) !important;
+                line-height: 1 !important;
+                flex-shrink: 0 !important;
+            }
+
+            header.header .logo .logo-text {
+                display: flex !important;
+                flex-direction: column !important;
+                line-height: 1.1 !important;
+            }
+
+            header.header .logo .logo-title {
+                font-size: 1.5rem !important;
+                font-weight: 800 !important;
+                color: var(--navy) !important;
+                letter-spacing: -0.02em !important;
+                line-height: 1 !important;
+            }
+
+            body.dark-mode header.header .logo .logo-title {
+                color: var(--text-dark) !important;
+            }
+
+            header.header .logo .logo-subtitle {
+                font-size: 0.8rem !important;
+                font-weight: 600 !important;
+                letter-spacing: 1.5px !important;
+                text-transform: uppercase !important;
+                color: var(--gold-dark) !important;
+                line-height: 1 !important;
+            }
+
+            /* ── Same standard logo inside the sidebar ── */
+            .h2-sidebar-head .logo .logo-icon {
+                font-size: 2rem !important;
+                color: var(--navy) !important;
+                flex-shrink: 0 !important;
+            }
+
+            .h2-sidebar-head .logo .logo-text {
+                display: flex !important;
+                flex-direction: column !important;
+                line-height: 1.1 !important;
+            }
+
+            .h2-sidebar-head .logo .logo-title {
+                font-size: 1.5rem !important;
+                font-weight: 800 !important;
+                color: var(--navy) !important;
+                letter-spacing: -0.02em !important;
+                line-height: 1 !important;
+            }
+
+            body.dark-mode .h2-sidebar-head .logo .logo-title {
+                color: var(--text-dark) !important;
+            }
+
+            .h2-sidebar-head .logo .logo-subtitle {
+                font-size: 0.8rem !important;
+                font-weight: 600 !important;
+                letter-spacing: 1.5px !important;
+                text-transform: uppercase !important;
+                color: var(--gold-dark) !important;
+                line-height: 1 !important;
+            }
+
+            html, body {
+                overflow-x: hidden !important;
+                width: 100%;
+            }
+
+            nav.nav-links {
+                position: fixed !important;
+                top: 0 !important;
+                right: 0 !important;
+                width: 70% !important;
+                max-width: 70% !important;
+                bottom: 0 !important;
+                height: 100dvh !important;
+                background: #ffffff !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0 !important;
+                padding: 0 !important;
+                transform: translateX(110%) !important;
+                visibility: hidden !important;
+                transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0.38s !important;
+                z-index: 10000 !important;
+                box-shadow: -8px 0 40px rgba(0, 0, 0, 0.18) !important;
+                border-radius: 0 !important;
+                overflow: hidden !important;
+            }
+
+            body.dark-mode nav.nav-links {
+                background: #111111 !important;
+            }
+
+            nav.nav-links.h2-open {
+                transform: translateX(0) !important;
+                visibility: visible !important;
+                transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0s !important;
+            }
+
+            /* ── Sidebar header (logo + close btn) ── */
+            .h2-sidebar-head {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1.25rem 1.5rem 1.25rem 1.5rem;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+                background: #ffffff;
+                flex-shrink: 0;
+            }
+
+            body.dark-mode .h2-sidebar-head {
+                background: #111111;
+                border-bottom-color: rgba(255, 255, 255, 0.07);
+            }
+
+            .h2-sidebar-head .logo {
+                display: flex !important;
+                align-items: center;
+                gap: 0.5rem;
+                text-decoration: none;
+            }
+
+            .h2-sidebar-head .logo-title {
+                font-size: 1.1rem !important;
+                font-weight: 800;
+                color: #1a1a1a !important;
+            }
+
+            body.dark-mode .h2-sidebar-head .logo-title {
+                color: #ffffff !important;
+            }
+
+            .h2-sidebar-head .logo .logo-icon {
+                font-size: 1.8rem !important;
+                color: var(--gold) !important;
+            }
+
+            /* Hide original mobile-menu-header — we use h2-sidebar-head */
+            .mobile-menu-header {
+                display: none !important;
+            }
+
+            /* ── Close button ── */
+            .h2-close-btn {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: rgba(0, 0, 0, 0.06);
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                color: #1a1a1a;
+                font-size: 1.2rem;
+                transition: background 0.2s, transform 0.2s;
+                flex-shrink: 0;
+            }
+
+            body.dark-mode .h2-close-btn {
+                background: rgba(255, 255, 255, 0.1);
+                color: #ffffff;
+            }
+
+            .h2-close-btn:hover {
+                background: rgba(197, 168, 128, 0.15);
+                color: var(--gold);
+                transform: rotate(90deg);
+            }
+
+            /* ── Scrollable nav body ── */
+            .h2-nav-body {
+                flex: 1;
+                overflow-y: auto;
+                padding: 0.75rem 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .h2-nav-body::-webkit-scrollbar {
+                width: 4px;
+            }
+
+            .h2-nav-body::-webkit-scrollbar-thumb {
+                background: var(--gold);
+                border-radius: 2px;
+            }
+
+            /* ── Nav links inside sidebar ── */
+            nav.nav-links a {
+                display: flex !important;
+                align-items: center !important;
+                gap: 0.75rem !important;
+                padding: 0.9rem 1.5rem !important;
+                font-size: 0.95rem !important;
+                font-weight: 600 !important;
+                color: #333333 !important;
+                border-radius: 0 !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+                transition: background 0.18s, color 0.18s, padding-left 0.18s !important;
+                width: 100% !important;
+                background: transparent !important;
+            }
+
+            body.dark-mode nav.nav-links a {
+                color: #cccccc !important;
+                border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+            }
+
+            nav.nav-links a:hover {
+                background: rgba(197, 168, 128, 0.08) !important;
+                color: var(--gold) !important;
+                padding-left: 2rem !important;
+            }
+
+            nav.nav-links a.active {
+                color: #ffffff !important;
+                background: var(--navy) !important;
+                border-left: 3px solid var(--navy) !important;
+                padding-left: calc(1.5rem - 3px) !important;
+            }
+
+            /* Icons visible on mobile */
+            .mobile-nav-icon {
+                display: inline-block !important;
+                font-size: 1rem;
+                color: var(--gold);
+                flex-shrink: 0;
+            }
+
+            /* ── Dropdown accordion ── */
+            .nav-dropdown {
+                width: 100% !important;
+                position: static !important;
+            }
+
+            .nav-dropdown>a {
+                position: relative !important;
+            }
+
+            .nav-dropdown>a .ph-caret-down {
+                margin-left: auto !important;
+                flex-shrink: 0;
+                transition: transform 0.3s ease;
+                opacity: 0.6;
+            }
+
+            .nav-dropdown.h2-dd-open>a .ph-caret-down {
+                transform: rotate(180deg);
+                opacity: 1;
+                color: var(--gold);
+            }
+
+            .dropdown-menu {
+                position: static !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                box-shadow: none !important;
+                background: rgba(0, 0, 0, 0.03) !important;
+                border: none !important;
+                padding: 0 !important;
+                min-width: unset !important;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.32s ease;
+                border-radius: 0 !important;
+            }
+
+            body.dark-mode .dropdown-menu {
+                background: rgba(255, 255, 255, 0.03) !important;
+            }
+
+            .nav-dropdown.h2-dd-open .dropdown-menu {
+                max-height: 300px;
+            }
+
+            .dropdown-menu a {
+                padding: 0.75rem 1.5rem 0.75rem 3rem !important;
+                font-size: 0.88rem !important;
+                font-weight: 500 !important;
+                color: #555555 !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
+                border-radius: 0 !important;
+                display: flex !important;
+                gap: 0.5rem !important;
+            }
+
+            body.dark-mode .dropdown-menu a {
+                color: #999999 !important;
+                border-bottom-color: rgba(255, 255, 255, 0.04) !important;
+            }
+
+            .dropdown-menu a:hover {
+                background: rgba(197, 168, 128, 0.1) !important;
+                color: var(--gold) !important;
+                padding-left: 3.5rem !important;
+            }
+
+            /* ── Sidebar footer (login + toggles) ── */
+            .h2-sidebar-foot {
+                flex-shrink: 0;
+                padding: 1rem 1.5rem 1.5rem;
+                border-top: 1px solid rgba(0, 0, 0, 0.08);
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                background: #ffffff;
+            }
+
+            body.dark-mode .h2-sidebar-foot {
+                background: #111111;
+                border-top-color: rgba(255, 255, 255, 0.07);
+            }
+
+            .h2-sidebar-foot .btn {
+                width: 100% !important;
+                justify-content: center !important;
+                font-size: 0.95rem !important;
+                padding: 0.8rem 1.5rem !important;
+            }
+
+            /* ── Toggle row (dark + RTL) inside sidebar ── */
+            .h2-toggle-row {
+                display: flex;
+                gap: 0.75rem;
+                width: 100%;
+            }
+
+            .h2-toggle-btn {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                padding: 0.65rem 0.75rem;
+                border-radius: 10px;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                background: rgba(0, 0, 0, 0.03);
+                color: #444444;
+                font-size: 0.82rem;
+                font-weight: 700;
+                cursor: pointer;
+                transition: all 0.2s;
+                font-family: inherit;
+            }
+
+            body.dark-mode .h2-toggle-btn {
+                border-color: rgba(255, 255, 255, 0.1);
+                background: rgba(255, 255, 255, 0.05);
+                color: #aaaaaa;
+            }
+
+            .h2-toggle-btn:hover,
+            .h2-toggle-btn.h2-active {
+                background: rgba(197, 168, 128, 0.15);
+                border-color: var(--gold);
+                color: var(--gold);
+            }
+
+            /* ── Hamburger toggle button ── */
+            .mobile-menu-toggle,
+            .mobile-menu-toggle:focus,
+            .mobile-menu-toggle:hover,
+            .mobile-menu-toggle:active {
+                display: flex !important;
+                background: transparent !important;
+                border: none !important;
+                color: var(--navy) !important;
+                outline: none !important;
+                box-shadow: none !important;
+                -webkit-appearance: none !important;
+                appearance: none !important;
+            }
+            
+            body.dark-mode .mobile-menu-toggle,
+            body.dark-mode .mobile-menu-toggle:focus,
+            body.dark-mode .mobile-menu-toggle:hover,
+            body.dark-mode .mobile-menu-toggle:active {
+                color: #ffffff !important;
+            }
+
+            /* ── Header actions hidden on mobile ── */
+            .header-actions {
+                display: none !important;
+            }
+
+            /* ── Hide the mobile-login-container (we replaced it) ── */
+            .mobile-login-container {
+                display: none !important;
+            }
+
+            /* ── Overlay backdrop ── */
+            #h2-nav-overlay {
+                position: fixed;
+                inset: 0;
+                background: transparent;
+                z-index: 998;
+                display: none;
+            }
+
+            #h2-nav-overlay.h2-show {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><i class="ph-fill ph-buildings logo-icon"></i>
+                <div class="logo-text"><span class="logo-title">ArchStruct</span><span class="logo-subtitle">Design
+                        Firm</span></div>
+            </a>
+            <nav class="nav-links" id="h2NavSidebar">
+
+                <!-- Sidebar Header: Logo + Close -->
+                <div class="h2-sidebar-head">
+                    <a href="index.html" class="logo">
+                        <i class="ph-fill ph-buildings logo-icon"></i>
+                        <div class="logo-text">
+                            <span class="logo-title">ArchStruct</span>
+                            <span class="logo-subtitle" style="color:var(--gold);">Design Firm</span>
+                        </div>
+                    </a>
+                    <button class="h2-close-btn" id="h2CloseBtn" aria-label="Close menu">
+                        <i class="ph-bold ph-x"></i>
+                    </button>
+                </div>
+
+                <!-- Scrollable Nav Links -->
+                <div class="h2-nav-body">
+                    <div class="nav-dropdown">
+                        <a href="home2.html" class="active">
+                            <i class="ph-bold ph-house mobile-nav-icon"></i>
+                            Home
+                            <i class="ph-bold ph-caret-down" style="font-size:0.8em;"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="index.html"><i class="ph-bold ph-house"
+                                    style="font-size:0.85em; color:var(--gold);"></i> Home 1 (Aurora)</a>
+                            <a href="home2.html"><i class="ph-bold ph-sparkle"
+                                    style="font-size:0.85em; color:var(--gold);"></i> Home 2 (Immersive)</a>
+                        </div>
+                    </div>
+                    <a href="about.html"><i class="ph-bold ph-info mobile-nav-icon"></i> About</a>
+                    <a href="services.html"><i class="ph-bold ph-compass mobile-nav-icon"></i> Services</a>
+                    <a href="portfolio.html"><i class="ph-bold ph-image mobile-nav-icon"></i> Portfolio</a>
+                    <a href="interactive-3d.html"><i class="ph-bold ph-cube mobile-nav-icon"></i> 3D Viewer</a>
+                    <a href="contact.html"><i class="ph-bold ph-phone mobile-nav-icon"></i> Contact</a>
+                    <div class="nav-dropdown">
+                        <a href="#">
+                            <i class="ph-bold ph-layout mobile-nav-icon"></i>
+                            Dashboards
+                            <i class="ph-bold ph-caret-down" style="font-size:0.8em;"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="client-dashboard.html"><i class="ph-bold ph-user"
+                                    style="font-size:0.85em; color:var(--gold);"></i> Client Dashboard</a>
+                            <a href="admin-dashboard.html"><i class="ph-bold ph-shield"
+                                    style="font-size:0.85em; color:var(--gold);"></i> Admin Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Footer: Login + Toggles -->
+                <div class="h2-sidebar-foot">
+                    <div class="h2-toggle-row">
+                        <button class="h2-toggle-btn" id="h2ThemeToggle" aria-label="Toggle Dark Mode">
+                            <i class="ph-bold ph-moon" id="h2ThemeIcon"></i> Dark Mode
+                        </button>
+                        <button class="h2-toggle-btn" id="h2RtlToggle" aria-label="Toggle RTL">
+                            <i class="ph-bold ph-text-align-right"></i> RTL
+                        </button>
+                    </div>
+                    <a href="login.html" class="btn btn-gold">Login <i class="ph-bold ph-sign-in"></i></a>
+                </div>
+
+            </nav>
+            <div class="header-actions">
+                <div class="toggle-group"><button id="theme-toggle" class="toggle-btn"><i
+                            class="ph-bold ph-moon"></i></button>
+                    <div class="toggle-divider"></div><button id="rtl-toggle" class="toggle-btn toggle-rtl">RTL</button>
+                </div>
+                <a href="login.html" class="btn btn-primary">Login <i
+                        class="ph-bold ph-sign-in"></i></a>
+            </div>
+            <button class="mobile-menu-toggle"><i class="ph-bold ph-list"></i></button>
+        </div>
+    </header>
+
+    <!-- SECTION 1: Hero -->
+    <section class="page-hero"
+        style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80');">
+        <div class="container">
+            <div class="page-hero-inner">
+                <div>
+                    <div class="breadcrumb"><a href="index.html">Home</a><i
+                            class="ph-bold ph-caret-right"></i><span>Services</span></div>
+                    <div class="section-label"
+                        style="background:rgba(197,168,128,0.15);border-color:rgba(197,168,128,0.3);color:var(--gold-light);">
+                        <i class="ph-fill ph-compass"></i> What We Do</div>
+                    <h1>Full-Spectrum<br>Design & Engineering</h1>
+                    <p style="color:rgba(255,255,255,0.65);font-size:1.1rem;margin-top:var(--s2);">From the first
+                        concept to the final inspection certificate, our integrated team of architects, engineers, and
+                        visualisation experts deliver with absolute precision across every discipline.</p>
+                </div>
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80"
+                    alt="ArchStruct Services" class="page-hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Services -->
+    <section class="section" style="background:var(--white);">
+        <div class="container">
+
+            <!-- 1. Architectural Design -->
+            <div class="service-block">
+                <div>
+                    <div class="service-number">01</div>
+                    <div class="section-label"><i class="ph-fill ph-pen-nib"></i> Discipline One</div>
+                    <h2>Architectural Design</h2>
+                    <p>Our architectural design practice is built on a foundation of rigorous research, creative
+                        exploration, and deep technical expertise. We believe that the best buildings are those that
+                        seamlessly integrate with their context while pushing the boundaries of what is possible.</p>
+                    <p>From intimate residential commissions to large-scale urban mixed-use developments, our design
+                        team crafts spaces that are functional, inspiring, and enduring. Every project begins with a
+                        thorough understanding of your objectives, your users, and the site — and ends with a building
+                        that exceeds your expectations.</p>
+                    <div class="feature-pills">
+                        <span class="pill">Conceptual Design</span>
+                        <span class="pill">Schematic Design</span>
+                        <span class="pill">Design Development</span>
+                        <span class="pill">Construction Docs</span>
+                        <span class="pill">Master Planning</span>
+                        <span class="pill">Interior Architecture</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"
+                    alt="Architectural Design" class="service-block-img">
+            </div>
+
+            <!-- 2. Structural Engineering -->
+            <div class="service-block reverse">
+                <div>
+                    <div class="service-number">02</div>
+                    <div class="section-label"><i class="ph-fill ph-buildings"></i> Discipline Two</div>
+                    <h2>Structural Engineering</h2>
+                    <p>Beneath every great building lies a great structure. Our structural engineering team uses the
+                        most advanced computational analysis tools available — including finite element modelling,
+                        parametric design, and BIM integration — to engineer frameworks that are simultaneously robust,
+                        efficient, and elegant.</p>
+                    <p>We have extensive experience in complex structural challenges including high-rise construction,
+                        long-span structures, seismic design, foundation engineering in difficult ground conditions, and
+                        structural retrofitting of heritage buildings.</p>
+                    <div class="feature-pills">
+                        <span class="pill">Seismic Design</span>
+                        <span class="pill">High-Rise Systems</span>
+                        <span class="pill">FEA Analysis</span>
+                        <span class="pill">Foundation Engineering</span>
+                        <span class="pill">Wind Load Studies</span>
+                        <span class="pill">Structural Retrofitting</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80"
+                    alt="Structural Engineering" class="service-block-img">
+            </div>
+
+            <!-- 3. 3D Visualization -->
+            <div class="service-block">
+                <div>
+                    <div class="service-number">03</div>
+                    <div class="section-label"><i class="ph-fill ph-cube"></i> Discipline Three</div>
+                    <h2>3D Visualization & Rendering</h2>
+                    <p>Our visualisation studio produces cinema-quality 3D imagery, immersive virtual reality
+                        experiences, and animated walkthroughs that bring your project to life long before the first
+                        shovel hits the ground. We use photorealistic rendering engines, custom material libraries, and
+                        drone simulation to create images that are indistinguishable from photography.</p>
+                    <p>Whether you need investor-grade presentation materials, planning application imagery, or a fully
+                        interactive VR experience for a sales centre, our visualisation team delivers with speed and
+                        absolute quality.</p>
+                    <div class="feature-pills">
+                        <span class="pill">Exterior CGI</span>
+                        <span class="pill">Interior CGI</span>
+                        <span class="pill">360° Walkthroughs</span>
+                        <span class="pill">VR Experiences</span>
+                        <span class="pill">Drone Simulation</span>
+                        <span class="pill">Animation Films</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80"
+                    alt="3D Visualization" class="service-block-img">
+            </div>
+
+            <!-- 4. Project Management -->
+            <div class="service-block reverse">
+                <div>
+                    <div class="service-number">04</div>
+                    <div class="section-label"><i class="ph-fill ph-lock-key"></i> Discipline Four</div>
+                    <h2>Project Management & Secure Portal</h2>
+                    <p>Managing a complex construction project requires exceptional coordination. Our dedicated project
+                        management team acts as your single point of contact — coordinating architects, engineers,
+                        contractors, and consultants to keep your project on time, on budget, and on brief.</p>
+                    <p>Every client is onboarded onto our proprietary collaboration portal, giving you 24/7 access to
+                        your project's blueprints, 3D models, approval workflows, milestone schedule, and a direct
+                        communication channel to your project team.</p>
+                    <div class="feature-pills">
+                        <span class="pill">Programme Management</span>
+                        <span class="pill">Cost Control</span>
+                        <span class="pill">Contractor Coordination</span>
+                        <span class="pill">Blueprint Management</span>
+                        <span class="pill">3D Model Reviews</span>
+                        <span class="pill">Real-Time Reporting</span>
+                    </div>
+                    <div style="margin-top:var(--s4);">
+                        <a href="login.html" class="btn btn-primary"><i class="ph-fill ph-sign-in"></i>
+                            Access Client Portal</a>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=80"
+                    alt="Project Management" class="service-block-img">
+            </div>
+
+            <!-- 5. Interior Design -->
+            <div class="service-block">
+                <div>
+                    <div class="service-number">05</div>
+                    <div class="section-label"><i class="ph-fill ph-armchair"></i> Discipline Five</div>
+                    <h2>Interior Design</h2>
+                    <p>Our interior design team believes that the spaces we inhabit have a profound impact on our
+                        well-being and productivity. We design bespoke interiors that are visually stunning, deeply
+                        functional, and perfectly aligned with the architectural shell.</p>
+                    <p>From material selection to custom furniture design and spatial planning, we ensure every detail
+                        contributes to a cohesive narrative.</p>
+                    <div class="feature-pills">
+                        <span class="pill">Space Planning</span>
+                        <span class="pill">Material Selection</span>
+                        <span class="pill">Custom Furniture</span>
+                        <span class="pill">Lighting Design</span>
+                        <span class="pill">Acoustic Strategy</span>
+                        <span class="pill">FF&E Procurement</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80"
+                    alt="Interior Design" class="service-block-img">
+            </div>
+
+            <!-- 6. Landscape Architecture -->
+            <div class="service-block reverse">
+                <div>
+                    <div class="service-number">06</div>
+                    <div class="section-label"><i class="ph-fill ph-tree"></i> Discipline Six</div>
+                    <h2>Landscape Architecture</h2>
+                    <p>We view landscape architecture as an essential extension of the building itself. Our landscape
+                        designs blur the boundaries between indoors and outdoors, creating ecological, social, and
+                        aesthetic value.</p>
+                    <p>Whether designing a corporate courtyard or a large public park, our landscapes are highly
+                        resilient and beautifully crafted.</p>
+                    <div class="feature-pills">
+                        <span class="pill">Site Planning</span>
+                        <span class="pill">Hardscape Design</span>
+                        <span class="pill">Planting Strategy</span>
+                        <span class="pill">Water Management</span>
+                        <span class="pill">Public Plazas</span>
+                        <span class="pill">Rooftop Gardens</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80"
+                    alt="Landscape Architecture" class="service-block-img">
+            </div>
+
+            <!-- 7. Sustainable Design -->
+            <div class="service-block">
+                <div>
+                    <div class="service-number">07</div>
+                    <div class="section-label"><i class="ph-fill ph-leaf"></i> Discipline Seven</div>
+                    <h2>Sustainable & Green Design</h2>
+                    <p>Sustainability is not an add-on; it is embedded in everything we do. We utilize passive design
+                        strategies, advanced energy modeling, and low-impact materials to minimize environmental
+                        footprints.</p>
+                    <p>We actively guide our clients through global certification frameworks (LEED, BREEAM, WELL) to
+                        deliver buildings that perform exceptionally well and benefit the planet.</p>
+                    <div class="feature-pills">
+                        <span class="pill">LEED Consulting</span>
+                        <span class="pill">Energy Modeling</span>
+                        <span class="pill">Passive Design</span>
+                        <span class="pill">Life Cycle Analysis</span>
+                        <span class="pill">Carbon Reduction</span>
+                        <span class="pill">WELL Standards</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80"
+                    alt="Sustainable Design" class="service-block-img">
+            </div>
+
+            <!-- 8. Urban Planning -->
+            <div class="service-block reverse">
+                <div>
+                    <div class="service-number">08</div>
+                    <div class="section-label"><i class="ph-fill ph-city"></i> Discipline Eight</div>
+                    <h2>Urban Planning & Masterplanning</h2>
+                    <p>Our urban planning team tackles projects at the neighborhood and city scales. We focus on
+                        mobility, density, zoning, and public realm quality to create masterplans that serve
+                        generations.</p>
+                    <p>We work closely with municipalities and developers to chart the future growth of complex urban
+                        environments.</p>
+                    <div class="feature-pills">
+                        <span class="pill">Masterplanning</span>
+                        <span class="pill">Urban Regeneration</span>
+                        <span class="pill">Zoning Studies</span>
+                        <span class="pill">Mobility Planning</span>
+                        <span class="pill">Public Realm</span>
+                        <span class="pill">Feasibility Analysis</span>
+                    </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&w=900&q=80"
+                    alt="Urban Planning" class="service-block-img">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 4: Our 4-Step Process -->
+    <section class="section process-section">
+        <div class="container">
+            <div class="section-header centered">
+                <div class="section-label"><i class="ph-fill ph-flow-arrow"></i> How We Work</div>
+                <h2>Our Proven 4-Step<br>Design Process</h2>
+                <p>Every ArchStruct project follows a carefully structured process designed to ensure clarity,
+                    efficiency, and excellence from the very first meeting.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="process-num">01</div>
+                    <h4>Discovery & Brief</h4>
+                    <p>Deep-dive consultation to fully understand your vision, budget, timeline, and the technical
+                        constraints of the site and programme.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-num">02</div>
+                    <h4>Concept & Design</h4>
+                    <p>Our architects develop multiple concept directions, refined through design reviews and supported
+                        by mood boards, sketches, and 3D visualisations.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-num">03</div>
+                    <h4>Engineering & Documentation</h4>
+                    <p>Full structural analysis, MEP coordination, and the production of complete construction
+                        documentation packages for planning and contractor tender.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-num">04</div>
+                    <h4>Construction & Handover</h4>
+                    <p>On-site construction administration, contractor oversight, quality inspection, and a complete
+                        project handover with as-built documentation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: CTA -->
+    <section class="cta-band">
+        <div class="container">
+            <div class="cta-inner">
+                <div>
+                    <div class="section-label"
+                        style="background:rgba(197,168,128,0.1);border-color:rgba(197,168,128,0.25);color:var(--gold-light);">
+                        <i class="ph-fill ph-rocket-launch"></i> Get Started</div>
+                    <h2>Ready to Commission<br>Your Dream Project?</h2>
+                    <p>Get in touch with our team today and find out how ArchStruct can bring your architectural
+                        ambitions to life with precision, creativity, and complete transparency.</p>
+                </div>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-gold btn-lg"><i class="ph-fill ph-calendar-plus"></i> Book a
+                        Consultation</a>
+                    <a href="portfolio.html" class="btn btn-ghost-white btn-lg"><i class="ph-fill ph-images"></i> See
+                        Our Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><a href="index.html" class="logo" style="margin-bottom:var(--s2);"><i
+                            class="ph-fill ph-buildings logo-icon" style="color:#ffffff;"></i>
+                        <div class="logo-text"><span class="logo-title" style="color:#ffffff;">ArchStruct</span><span
+                                class="logo-subtitle">Design Firm</span></div>
+                    </a>
+                    <p>Delivering visionary architecture, precision structural engineering, and immersive 3D design
+                        experiences globally.</p>
+                    <div class="social-links"><a href="#"><i class="ph-fill ph-linkedin-logo"></i></a><a href="#"><i
+                                class="ph-fill ph-instagram-logo"></i></a><a href="#"><i
+                                class="ph-fill ph-twitter-logo"></i></a></div>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html" class="active">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="services.html" class="active">Architectural Design</a></li>
+                        <li><a href="services.html" class="active">Structural Engineering</a></li>
+                        <li><a href="services.html" class="active">3D Visualization</a></li>
+                        <li><a href="services.html" class="active">Project Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact</h5>
+                    <ul class="footer-contact">
+                        <li><i class="ph-fill ph-map-pin"></i> 100 Skyline Blvd, Suite 400, NY</li>
+                        <li><i class="ph-fill ph-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="ph-fill ph-envelope"></i> design@archstruct.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ArchStruct Design Firm. All rights reserved.</p>
+                <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/mobile-nav.js"></script>
+<script>
+        // ── Home 2 Sidebar Logic ported to Home 1 ─────────────────────────────────────
+        (function () {
+            const sidebar = document.getElementById('h2NavSidebar');
+            const hamburger = document.querySelector('.mobile-menu-toggle');
+            const closeBtn = document.getElementById('h2CloseBtn');
+            const themeBtn = document.getElementById('h2ThemeToggle');
+            const themeIcon = document.getElementById('h2ThemeIcon');
+            const rtlBtn = document.getElementById('h2RtlToggle');
+
+            if (!sidebar || !hamburger) return; // safety check
+
+            // ── Overlay ─────────────────────────────────────────────────────
+            const overlay = document.createElement('div');
+            overlay.id = 'h2-nav-overlay';
+            document.querySelector('.header').appendChild(overlay);
+
+            function openSidebar() {
+                sidebar.classList.add('h2-open');
+                overlay.classList.add('h2-show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeSidebar() {
+                sidebar.classList.remove('h2-open');
+                overlay.classList.remove('h2-show');
+                document.body.style.overflow = '';
+            }
+
+            hamburger.addEventListener('click', openSidebar);
+            if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+            overlay.addEventListener('click', closeSidebar);
+
+            // ── Dropdown accordion ───────────────────────────────────────────
+            sidebar.querySelectorAll('.nav-dropdown > a').forEach(trigger => {
+                trigger.addEventListener('click', function (e) {
+                    const menu = this.nextElementSibling;
+                    if (!menu || !menu.classList.contains('dropdown-menu')) return;
+                    e.preventDefault();
+                    const parent = this.parentElement;
+                    const isOpen = parent.classList.contains('h2-dd-open');
+                    sidebar.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('h2-dd-open'));
+                    if (!isOpen) parent.classList.add('h2-dd-open');
+                });
+            });
+
+            // Close sidebar when a leaf link is clicked
+            sidebar.querySelectorAll('.dropdown-menu a, .h2-nav-body > a').forEach(a => {
+                a.addEventListener('click', closeSidebar);
+            });
+
+            // ── Dark Mode toggle (sidebar) ──────────────────────────────────
+            function syncThemeBtn() {
+                const dark = document.body.classList.contains('dark-mode');
+                if (themeIcon) themeIcon.className = dark ? 'ph-bold ph-sun' : 'ph-bold ph-moon';
+                if (themeBtn) {
+                    themeBtn.childNodes[1].textContent = dark ? ' Light Mode' : ' Dark Mode';
+                    themeBtn.classList.toggle('h2-active', dark);
+                }
+            }
+
+            if (themeBtn) {
+                syncThemeBtn();
+                themeBtn.addEventListener('click', () => {
+                    document.body.classList.toggle('dark-mode');
+                    const dark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('theme', dark ? 'dark' : 'light');
+                    syncThemeBtn();
+                });
+            }
+
+            // ── RTL toggle (sidebar) ────────────────────────────────────────
+            function syncRtlBtn() {
+                const rtl = document.documentElement.getAttribute('dir') === 'rtl';
+                if (rtlBtn) rtlBtn.classList.toggle('h2-active', rtl);
+            }
+
+            if (rtlBtn) {
+                syncRtlBtn();
+                rtlBtn.addEventListener('click', () => {
+                    const rtl = document.documentElement.getAttribute('dir') === 'rtl';
+                    document.documentElement.setAttribute('dir', rtl ? 'ltr' : 'rtl');
+                    localStorage.setItem('dir', rtl ? 'ltr' : 'rtl');
+                    syncRtlBtn();
+                });
+            }
+
+            // ── Init state from localStorage ────────────────────────────────
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                syncThemeBtn();
+            }
+            if (localStorage.getItem('dir') === 'rtl') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                syncRtlBtn();
+            }
+        })();
+    </script>
+</body>
+
+</html>

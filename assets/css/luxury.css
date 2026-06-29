@@ -1,0 +1,714 @@
+/* ═══════════════════════════════════════════════════════════════
+   ArchStruct — Luxury Enhancement Layer
+   Premium effects, 3D transforms, scroll reveals, micro-animations
+═══════════════════════════════════════════════════════════════ */
+
+/* ─── Scroll Reveal System ───────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.75s cubic-bezier(0.4,0,0.2,1), transform 0.75s cubic-bezier(0.4,0,0.2,1);
+}
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+.reveal-left  { opacity:0; transform:translateX(-50px); transition: opacity 0.75s var(--ease), transform 0.75s var(--ease); }
+.reveal-right { opacity:0; transform:translateX(50px);  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease); }
+.reveal-left.revealed, .reveal-right.revealed { opacity:1; transform:translateX(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ─── AURORA HERO SPLIT ─────────────────────────────────────────────────── */
+.hero-blend {
+  height: calc(113vh - 150px);;
+  min-height: 500px
+  max-height: 1080px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--off-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background floating glow spots for moving ambient effect */
+.hero-blend::before {
+  content: '';
+  position: absolute;
+  width: clamp(300px, 40vw, 550px);
+  height: clamp(300px, 40vw, 550px);
+  background: radial-gradient(circle, rgba(197,168,128,0.08) 0%, transparent 70%);
+  top: -150px;
+  left: -150px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: orb-drift-slow 20s ease-in-out infinite alternate;
+}
+
+.hero-blend::after {
+  content: '';
+  position: absolute;
+  width: clamp(250px, 30vw, 450px);
+  height: clamp(250px, 30vw, 450px);
+  background: radial-gradient(circle, var(--navy-glow) 0%, transparent 70%);
+  bottom: 10%;
+  left: 20%;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: orb-drift-slow-rev 24s ease-in-out infinite alternate;
+}
+
+@keyframes orb-drift-slow {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(60px, 40px) scale(1.15); }
+}
+
+@keyframes orb-drift-slow-rev {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-40px, -50px) scale(1.1); }
+}
+
+.hero-blend-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 46% 54%;
+  align-items: stretch;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  min-height: 0;
+}
+
+.hero-blend-left {
+  padding-left: max(var(--s4), calc((100vw - 1280px) / 2 + var(--s4)));
+  padding-right: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* Entrance slide-in/fade-in animations for text elements */
+.hero-blend-eyebrow {
+  font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  line-height: 1.45;
+  animation: slide-in-down 0.9s var(--ease) forwards;
+}
+
+.hero-blend-title {
+  font-size: clamp(2.6rem, 4.4vw, 4.4rem);
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: slide-in-up 1.1s var(--ease) 0.15s forwards;
+}
+
+.hero-blend-desc {
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  color: var(--text-light);
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+  max-width: 480px;
+  opacity: 0;
+  animation: fade-in 1.2s var(--ease) 0.35s forwards;
+}
+
+.hero-blend-btns {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: slide-in-up 1.1s var(--ease) 0.5s forwards;
+}
+
+/* Custom design buttons matching reference */
+.btn-dark {
+  background: var(--navy-dark);
+  color: #ffffff;
+  border: 1px solid var(--navy-dark);
+  border-radius: 4px;
+  padding: 0.95rem 2.2rem;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: all var(--t-fast);
+}
+
+.btn-dark:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy-dark);
+}
+
+.btn-outline-dark {
+  background: transparent;
+  color: var(--text-dark);
+  border: 1.5px solid var(--text-dark);
+  border-radius: 4px;
+  padding: 0.9rem 2.2rem;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: all var(--t-fast);
+}
+
+.btn-outline-dark:hover {
+  background: var(--text-dark);
+  color: #ffffff;
+}
+
+/* Navbar Collaboration Portal Button */
+.btn-portal {
+  background: var(--navy-dark);
+  color: #ffffff !important;
+  border: 1px solid var(--navy-dark);
+  border-radius: 4px;
+  padding: 0.7rem 1.6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all var(--t-fast);
+}
+
+.btn-portal:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy-dark) !important;
+}
+
+body.dark-mode .btn-portal {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text-dark) !important;
+}
+
+body.dark-mode .btn-portal:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy-dark) !important;
+}
+
+/* Scroll indicator */
+.hero-blend-scroll {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fade-in 1.2s var(--ease) 0.7s forwards;
+}
+
+.hero-blend-scroll .scroll-line {
+  width: 50px;
+  height: 1.5px;
+  background: var(--gold);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-blend-scroll .scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--white);
+  transform: translateX(-100%);
+  animation: scroll-line-sweep 2s ease-in-out infinite;
+}
+
+@keyframes scroll-line-sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Right Image Column */
+.hero-blend-right {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-blend-img-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hero-blend-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Keyframes for Auto-Motion Effects */
+@keyframes slide-in-down {
+  from { opacity: 0; transform: translateY(-25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Floating Architectural Particles/Icons Styling */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  color: var(--gold);
+  opacity: 0.15;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.p-cross-1 {
+  top: 15%;
+  left: 10%;
+  font-size: 0.45rem;
+  animation: roam-1 22s linear infinite alternate;
+}
+
+.p-cross-2 {
+  bottom: 30%;
+  left: 40%;
+  font-size: 0.35rem;
+  animation: roam-2 28s linear infinite alternate;
+  opacity: 0.1;
+}
+
+.p-circle-1 {
+  top: 40%;
+  left: 8%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: roam-3 18s linear infinite alternate;
+  opacity: 0.2;
+}
+
+.p-circle-2 {
+  bottom: 15%;
+  left: 20%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  animation: roam-4 25s linear infinite alternate;
+  opacity: 0.12;
+}
+
+.p-square-1 {
+  top: 25%;
+  left: 32%;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--gold);
+  transform: rotate(15deg);
+  animation: roam-5 32s linear infinite alternate;
+  opacity: 0.08;
+}
+
+.p-triangle-1 {
+  bottom: 22%;
+  left: 5%;
+  width: 12px;
+  height: 12px;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 5px solid var(--gold);
+  animation: roam-6 26s linear infinite alternate;
+  opacity: 0.08;
+}
+
+.p-line-1 {
+  top: 55%;
+  left: 25%;
+  width: 15px;
+  height: 1px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  animation: roam-7 30s linear infinite alternate;
+  opacity: 0.1;
+}
+
+/* Roaming Animations */
+@keyframes roam-1 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(50px, 30px) rotate(180deg); }
+}
+
+@keyframes roam-2 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-40px, 60px) rotate(-90deg); }
+}
+
+@keyframes roam-3 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -40px) scale(1.3); }
+}
+
+@keyframes roam-4 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(60px, -20px) rotate(120deg); }
+}
+
+@keyframes roam-5 {
+  0% { transform: translate(0, 0) rotate(15deg); }
+  100% { transform: translate(-30px, -50px) rotate(195deg); }
+}
+
+@keyframes roam-6 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(45px, 25px) rotate(360deg); }
+}
+
+@keyframes roam-7 {
+  0% { transform: translate(0, 0) rotate(45deg); }
+  100% { transform: translate(-20px, 40px) rotate(225deg); }
+}
+
+/* Left fade overlay on image */
+.hero-blend-img-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--off-white) 0%, var(--off-white) 5%, transparent 35%);
+  pointer-events: none;
+}
+
+/* Bottom Features Band */
+.hero-features-band {
+  background: var(--dark-bg);
+  color: #ffffff;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 1.4rem 0;
+  width: 100%;
+  z-index: 5;
+  position: relative;
+}
+
+.hero-features-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  transition: transform var(--t-med);
+}
+
+.feature-item:hover {
+  transform: translateY(-2px);
+}
+
+.feature-icon {
+  color: var(--gold);
+  font-size: 1.5rem;
+  display: flex;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.feature-text h4 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1.2px;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
+.feature-text p {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
+  line-height: 1.35;
+}
+
+
+/* ─── LUXURY 3D CARD HOVER (for svc, testi, bento) ──────────────────────── */
+.lux-card {
+  transform-style: preserve-3d;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.lux-card:hover {
+  transform: perspective(800px) rotateX(-4deg) rotateY(3deg) translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(197,168,128,0.2);
+}
+
+/* Gold accent line on section labels */
+.section-label-lux {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.section-label-lux::before {
+  content: '';
+  width: 40px; height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+  flex-shrink: 0;
+}
+
+/* Luxury section divider */
+.lux-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.lux-divider::before,
+.lux-divider::after {
+  content: '';
+  width: 80px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.lux-divider::after { transform: scaleX(-1); }
+
+.lux-divider i { color: var(--gold); font-size: 1rem; }
+
+/* ─── Stats Band Luxury ──────────────────────────────────────────────────── */
+.stats-band {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-band::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--navy), var(--gold), transparent);
+}
+
+.stat-number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  margin-bottom: 0.4rem;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Bento Luxury upgrades ──────────────────────────────────────────────── */
+.bento-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-xl);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+
+.bento-item:hover {
+  transform: perspective(1000px) rotateX(-3deg) rotateY(2deg) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+  z-index: 2;
+}
+
+/* ─── Service Cards Luxury ───────────────────────────────────────────────── */
+.svc-card {
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  background: var(--white);
+  transition: all 0.4s var(--ease);
+  cursor: pointer;
+  position: relative;
+}
+
+.svc-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--navy), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+
+.svc-card:hover::after { transform: scaleX(1); }
+.svc-card:hover { border-color: var(--gold); box-shadow: 0 24px 48px rgba(0,0,0,0.12); transform: translateY(-8px); }
+
+/* ─── 3D render cards luxury ─────────────────────────────────────────────── */
+.render-card {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--border);
+  transition: all 0.4s var(--ease);
+  cursor: pointer;
+  position: relative;
+}
+
+.render-card:hover {
+  transform: perspective(800px) rotateX(-3deg) translateY(-8px);
+  border-color: rgba(197,168,128,0.3);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 30px rgba(197,168,128,0.08);
+}
+
+/* ─── Portal Features hover ──────────────────────────────────────────────── */
+.portal-feature:hover .pf-icon {
+  background: linear-gradient(135deg, rgba(197,168,128,0.2), rgba(197,168,128,0.05));
+  border-color: rgba(197,168,128,0.3);
+  transform: scale(1.1) rotate(-5deg);
+  transition: transform 0.3s var(--ease);
+}
+
+/* ─── Process step luxury ────────────────────────────────────────────────── */
+.process-step:hover .process-num {
+  background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+  color: #ffffff;
+  transform: scale(1.12) rotateZ(5deg);
+  box-shadow: 0 12px 30px var(--navy-glow);
+}
+
+/* ─── Testimonial cards luxury ───────────────────────────────────────────── */
+.testi-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.testi-card::before {
+  content: '"';
+  position: absolute;
+  top: -10px; right: 1.5rem;
+  font-size: 8rem;
+  font-weight: 800;
+  color: rgba(197,168,128,0.06);
+  line-height: 1;
+  pointer-events: none;
+  font-family: serif;
+}
+
+/* ─── CTA Band luxury ────────────────────────────────────────────────────── */
+.cta-band {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-band::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(197,168,128,0.5) 50%, transparent 100%);
+}
+
+/* ─── Footer luxury ──────────────────────────────────────────────────────── */
+.site-footer {
+  position: relative;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(197,168,128,0.3), transparent);
+}
+
+/* ─── Page hero luxury ───────────────────────────────────────────────────── */
+/* Removed .page-hero override */
+
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(197,168,128,0.25), transparent);
+}
+
+/* Gold top border on cards */
+.gold-top { border-top: 2px solid var(--gold); }
+
+/* Glow text effect */
+.glow-text {
+  text-shadow: 0 0 40px rgba(197,168,128,0.3);
+}
+
+/* Luxury hover link arrow animation */
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  color: var(--navy);
+  transition: gap 0.3s var(--ease), color 0.3s;
+}
+.arrow-link:hover { gap: 0.9rem; color: var(--gold-dark); }
+.arrow-link i { transition: transform 0.3s var(--ease); }
+.arrow-link:hover i { transform: translateX(4px); }
+
+/* ─── Responsive luxury ──────────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .hero3d-container { grid-template-columns: 1fr; padding-left: 0; }
+  .hero3d-right { display: none; }
+  .hero3d-left { padding-right: 0; max-width: 600px; }
+  .hero-3d { height: auto; min-height: calc(100vh - 65px); padding: 3.5rem 0; }
+  .hero3d-ticker { display: none; }
+}
+
+@media (max-width: 768px) {
+  .fc-awards, .fc-render, .fc-portal { display: none; }
+  .hero3d-h1 { font-size: 2.4rem; }
+  .hero3d-stats { gap: 0.75rem; padding: 0.85rem 1rem; }
+  .h3s-num { font-size: 1.2rem; }
+}

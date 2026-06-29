@@ -1,0 +1,194 @@
+/* Custom Gallery specific CSS for the Portfolio showcase */
+
+.custom-gallery-section {
+    position: relative;
+    padding: var(--spacing-6) 0;
+    background: var(--bg-alt);
+    overflow: hidden;
+}
+
+.cg-wave-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+    opacity: 0.05;
+}
+
+.cg-container {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--spacing-4);
+    align-items: center;
+}
+
+.cg-title {
+    margin-bottom: var(--spacing-3);
+}
+
+.cg-subtitle {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-4);
+}
+
+.cg-features {
+    margin-bottom: var(--spacing-4);
+}
+
+.cg-features li {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: center;
+}
+
+.cg-feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-round);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.cg-feature-text strong {
+    display: block;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+}
+
+.cg-feature-text span {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.cg-banner {
+    background: var(--white);
+    padding: var(--spacing-3);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+.cg-banner-icon {
+    background: var(--icon-bg);
+    color: var(--accent-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.cg-banner-text strong {
+    display: block;
+    color: var(--text-dark);
+}
+
+.cg-banner-text span {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.cg-banner-btn {
+    margin-left: auto;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cg-center-image img {
+    height: 600px;
+    object-fit: cover;
+    box-shadow: var(--shadow-lg);
+}
+
+.cg-right-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+}
+
+.cg-img-top, .cg-img-bottom {
+    position: relative;
+}
+
+.cg-img-top img, .cg-img-bottom img {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    height: 280px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.cg-floating-card {
+    position: absolute;
+    background: var(--white);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 3;
+}
+
+.cg-top-card {
+    bottom: -20px;
+    right: 20px;
+}
+
+.cg-bottom-card {
+    bottom: 20px;
+    left: -30px;
+}
+
+.card-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+/* Decorations */
+.cg-decoration {
+    position: absolute;
+    color: var(--icon-bg);
+    z-index: 1;
+}
+
+@media (max-width: 1023px) {
+    .cg-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .cg-center-image {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .cg-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .cg-right-col {
+        display: none;
+    }
+}

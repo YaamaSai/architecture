@@ -1,0 +1,108 @@
+/* ─── Dark Mode ─────────────────────────────────────────────────────────── */
+body.dark-mode {
+  --off-white: #0A0F1A;
+  --surface:   #111827;
+  --white:     #1A2336;
+  --border:    #1E2D45;
+  --border-light: #1E2D45;
+  --text-dark: #F1F5F9;
+  --text-mid:  #CBD5E1;
+  --text-light: #94A3B8;
+  --text-muted: #64748B;
+  --glass-bg: rgba(26,35,54,0.7);
+  background: var(--off-white);
+}
+
+body.dark-mode .header {
+  background: rgba(10, 15, 26, 0.9);
+  border-bottom-color: var(--border);
+}
+
+/* Fix text readability for elements that are hardcoded to --navy in light mode */
+body.dark-mode .logo-title,
+body.dark-mode .logo-icon,
+body.dark-mode .stat-number,
+body.dark-mode .cg-stat-num,
+body.dark-mode .ab-num,
+body.dark-mode .process-num,
+body.dark-mode .mobile-menu-toggle,
+body.dark-mode .btn-outline,
+body.dark-mode .btn-white {
+  color: #ffffff !important;
+}
+
+body.dark-mode .nav-links a:hover,
+body.dark-mode .toggle-btn:hover,
+body.dark-mode .svc-link,
+body.dark-mode .arrow-link {
+  color: #ffffff !important;
+}
+
+body.dark-mode .logo-subtitle {
+  color: var(--text-mid) !important;
+}
+
+body.dark-mode .process-num {
+  background: var(--surface) !important;
+  border-color: rgba(255,255,255,0.2) !important;
+}
+
+body.dark-mode .about-badge {
+  background: var(--surface) !important;
+}
+
+body.dark-mode .svc-card,
+body.dark-mode .testi-card,
+body.dark-mode .contact-info-card,
+body.dark-mode .contact-form-card,
+body.dark-mode .team-card {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+body.dark-mode .form-control {
+  background: var(--off-white);
+  border-color: var(--border);
+  color: var(--text-dark);
+}
+
+body.dark-mode .footer {
+  background: #050A12;
+}
+
+body.dark-mode .toggle-group { background: var(--surface); border-color: var(--border); }
+body.dark-mode .toggle-btn { color: var(--text-mid); }
+
+/* Mobile sidebar dark mode */
+body.dark-mode .nav-links {
+  background: var(--surface) !important;
+}
+
+body.dark-mode .nav-links a {
+  color: var(--text-dark) !important;
+  border-bottom-color: var(--border) !important;
+}
+
+body.dark-mode .nav-links a.active {
+  background: var(--navy) !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .nav-dropdown .dropdown-menu a {
+  background: var(--off-white) !important;
+  color: var(--text-light) !important;
+  border-color: var(--border) !important;
+}
+
+body.dark-mode .nav-dropdown .dropdown-menu a:hover {
+  background: var(--border) !important;
+  color: #ffffff !important;
+}
+
+/* RTL Support */
+body[dir="rtl"] .bento-item.tall { order: -1; }
+body[dir="rtl"] .renders-header { flex-direction: row-reverse; }
+body[dir="rtl"] .service-block.reverse { direction: ltr; }
+body[dir="rtl"] .portal-inner { direction: rtl; }
+body[dir="rtl"] .footer-grid { direction: rtl; }
+body[dir="rtl"] .cta-inner { direction: rtl; }

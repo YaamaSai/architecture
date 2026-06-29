@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive 3D Viewer | ArchStruct Design Firm</title>
+    <meta name="description"
+        content="Explore ArchStruct's architectural designs in immersive 3D. Rotate, zoom, and inspect our award-winning projects from every angle.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/luxury.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+<style>
+        /* ═══════════════════════════════════════════════════
+           HOME 2 — PREMIUM MOBILE / TABLET NAV (≤ 1024px)
+           Desktop (> 1024px) is 100% untouched.
+        ═══════════════════════════════════════════════════ */
+        @media (max-width: 1023px) {
+
+            /* ── Footer-style logo in the main header navbar ── */
+            header.header .logo {
+                display: flex !important;
+                align-items: center !important;
+                gap: 0.6rem !important;
+                text-decoration: none !important;
+            }
+
+            header.header .logo .logo-icon {
+                font-size: 2rem !important;
+                color: var(--navy) !important;
+                line-height: 1 !important;
+                flex-shrink: 0 !important;
+            }
+
+            header.header .logo .logo-text {
+                display: flex !important;
+                flex-direction: column !important;
+                line-height: 1.1 !important;
+            }
+
+            header.header .logo .logo-title {
+                font-size: 1.5rem !important;
+                font-weight: 800 !important;
+                color: var(--navy) !important;
+                letter-spacing: -0.02em !important;
+                line-height: 1 !important;
+            }
+
+            body.dark-mode header.header .logo .logo-title {
+                color: var(--text-dark) !important;
+            }
+
+            header.header .logo .logo-subtitle {
+                font-size: 0.8rem !important;
+                font-weight: 600 !important;
+                letter-spacing: 1.5px !important;
+                text-transform: uppercase !important;
+                color: var(--gold-dark) !important;
+                line-height: 1 !important;
+            }
+
+            /* ── Same standard logo inside the sidebar ── */
+            .h2-sidebar-head .logo .logo-icon {
+                font-size: 2rem !important;
+                color: var(--navy) !important;
+                flex-shrink: 0 !important;
+            }
+
+            .h2-sidebar-head .logo .logo-text {
+                display: flex !important;
+                flex-direction: column !important;
+                line-height: 1.1 !important;
+            }
+
+            .h2-sidebar-head .logo .logo-title {
+                font-size: 1.5rem !important;
+                font-weight: 800 !important;
+                color: var(--navy) !important;
+                letter-spacing: -0.02em !important;
+                line-height: 1 !important;
+            }
+
+            body.dark-mode .h2-sidebar-head .logo .logo-title {
+                color: var(--text-dark) !important;
+            }
+
+            .h2-sidebar-head .logo .logo-subtitle {
+                font-size: 0.8rem !important;
+                font-weight: 600 !important;
+                letter-spacing: 1.5px !important;
+                text-transform: uppercase !important;
+                color: var(--gold-dark) !important;
+                line-height: 1 !important;
+            }
+
+            html, body {
+                overflow-x: hidden !important;
+                width: 100%;
+            }
+
+            nav.nav-links {
+                position: fixed !important;
+                top: 0 !important;
+                right: 0 !important;
+                width: 70% !important;
+                max-width: 70% !important;
+                bottom: 0 !important;
+                height: 100dvh !important;
+                background: #ffffff !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0 !important;
+                padding: 0 !important;
+                transform: translateX(110%) !important;
+                visibility: hidden !important;
+                transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0.38s !important;
+                z-index: 10000 !important;
+                box-shadow: -8px 0 40px rgba(0, 0, 0, 0.18) !important;
+                border-radius: 0 !important;
+                overflow: hidden !important;
+            }
+
+            body.dark-mode nav.nav-links {
+                background: #111111 !important;
+            }
+
+            nav.nav-links.h2-open {
+                transform: translateX(0) !important;
+                visibility: visible !important;
+                transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0s !important;
+            }
+
+            /* ── Sidebar header (logo + close btn) ── */
+            .h2-sidebar-head {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1.25rem 1.5rem 1.25rem 1.5rem;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+                background: #ffffff;
+                flex-shrink: 0;
+            }
+
+            body.dark-mode .h2-sidebar-head {
+                background: #111111;
+                border-bottom-color: rgba(255, 255, 255, 0.07);
+            }
+
+            .h2-sidebar-head .logo {
+                display: flex !important;
+                align-items: center;
+                gap: 0.5rem;
+                text-decoration: none;
+            }
+
+            .h2-sidebar-head .logo-title {
+                font-size: 1.1rem !important;
+                font-weight: 800;
+                color: #1a1a1a !important;
+            }
+
+            body.dark-mode .h2-sidebar-head .logo-title {
+                color: #ffffff !important;
+            }
+
+            .h2-sidebar-head .logo .logo-icon {
+                font-size: 1.8rem !important;
+                color: var(--gold) !important;
+            }
+
+            /* Hide original mobile-menu-header — we use h2-sidebar-head */
+            .mobile-menu-header {
+                display: none !important;
+            }
+
+            /* ── Close button ── */
+            .h2-close-btn {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: rgba(0, 0, 0, 0.06);
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                color: #1a1a1a;
+                font-size: 1.2rem;
+                transition: background 0.2s, transform 0.2s;
+                flex-shrink: 0;
+            }
+
+            body.dark-mode .h2-close-btn {
+                background: rgba(255, 255, 255, 0.1);
+                color: #ffffff;
+            }
+
+            .h2-close-btn:hover {
+                background: rgba(197, 168, 128, 0.15);
+                color: var(--gold);
+                transform: rotate(90deg);
+            }
+
+            /* ── Scrollable nav body ── */
+            .h2-nav-body {
+                flex: 1;
+                overflow-y: auto;
+                padding: 0.75rem 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .h2-nav-body::-webkit-scrollbar {
+                width: 4px;
+            }
+
+            .h2-nav-body::-webkit-scrollbar-thumb {
+                background: var(--gold);
+                border-radius: 2px;
+            }
+
+            /* ── Nav links inside sidebar ── */
+            nav.nav-links a {
+                display: flex !important;
+                align-items: center !important;
+                gap: 0.75rem !important;
+                padding: 0.9rem 1.5rem !important;
+                font-size: 0.95rem !important;
+                font-weight: 600 !important;
+                color: #333333 !important;
+                border-radius: 0 !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+                transition: background 0.18s, color 0.18s, padding-left 0.18s !important;
+                width: 100% !important;
+                background: transparent !important;
+            }
+
+            body.dark-mode nav.nav-links a {
+                color: #cccccc !important;
+                border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+            }
+
+            nav.nav-links a:hover {
+                background: rgba(197, 168, 128, 0.08) !important;
+                color: var(--gold) !important;
+                padding-left: 2rem !important;
+            }
+
+            nav.nav-links a.active {
+                color: #ffffff !important;
+                background: var(--navy) !important;
+                border-left: 3px solid var(--navy) !important;
+                padding-left: calc(1.5rem - 3px) !important;
+            }
+
+            /* Icons visible on mobile */
+            .mobile-nav-icon {
+                display: inline-block !important;
+                font-size: 1rem;
+                color: var(--gold);
+                flex-shrink: 0;
+            }
+
+            /* ── Dropdown accordion ── */
+            .nav-dropdown {
+                width: 100% !important;
+                position: static !important;
+            }
+
+            .nav-dropdown>a {
+                position: relative !important;
+            }
+
+            .nav-dropdown>a .ph-caret-down {
+                margin-left: auto !important;
+                flex-shrink: 0;
+                transition: transform 0.3s ease;
+                opacity: 0.6;
+            }
+
+            .nav-dropdown.h2-dd-open>a .ph-caret-down {
+                transform: rotate(180deg);
+                opacity: 1;
+                color: var(--gold);
+            }
+
+            .dropdown-menu {
+                position: static !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                box-shadow: none !important;
+                background: rgba(0, 0, 0, 0.03) !important;
+                border: none !important;
+                padding: 0 !important;
+                min-width: unset !important;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.32s ease;
+                border-radius: 0 !important;
+            }
+
+            body.dark-mode .dropdown-menu {
+                background: rgba(255, 255, 255, 0.03) !important;
+            }
+
+            .nav-dropdown.h2-dd-open .dropdown-menu {
+                max-height: 300px;
+            }
+
+            .dropdown-menu a {
+                padding: 0.75rem 1.5rem 0.75rem 3rem !important;
+                font-size: 0.88rem !important;
+                font-weight: 500 !important;
+                color: #555555 !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
+                border-radius: 0 !important;
+                display: flex !important;
+                gap: 0.5rem !important;
+            }
+
+            body.dark-mode .dropdown-menu a {
+                color: #999999 !important;
+                border-bottom-color: rgba(255, 255, 255, 0.04) !important;
+            }
+
+            .dropdown-menu a:hover {
+                background: rgba(197, 168, 128, 0.1) !important;
+                color: var(--gold) !important;
+                padding-left: 3.5rem !important;
+            }
+
+            /* ── Sidebar footer (login + toggles) ── */
+            .h2-sidebar-foot {
+                flex-shrink: 0;
+                padding: 1rem 1.5rem 1.5rem;
+                border-top: 1px solid rgba(0, 0, 0, 0.08);
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                background: #ffffff;
+            }
+
+            body.dark-mode .h2-sidebar-foot {
+                background: #111111;
+                border-top-color: rgba(255, 255, 255, 0.07);
+            }
+
+            .h2-sidebar-foot .btn {
+                width: 100% !important;
+                justify-content: center !important;
+                font-size: 0.95rem !important;
+                padding: 0.8rem 1.5rem !important;
+            }
+
+            /* ── Toggle row (dark + RTL) inside sidebar ── */
+            .h2-toggle-row {
+                display: flex;
+                gap: 0.75rem;
+                width: 100%;
+            }
+
+            .h2-toggle-btn {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                padding: 0.65rem 0.75rem;
+                border-radius: 10px;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                background: rgba(0, 0, 0, 0.03);
+                color: #444444;
+                font-size: 0.82rem;
+                font-weight: 700;
+                cursor: pointer;
+                transition: all 0.2s;
+                font-family: inherit;
+            }
+
+            body.dark-mode .h2-toggle-btn {
+                border-color: rgba(255, 255, 255, 0.1);
+                background: rgba(255, 255, 255, 0.05);
+                color: #aaaaaa;
+            }
+
+            .h2-toggle-btn:hover,
+            .h2-toggle-btn.h2-active {
+                background: rgba(197, 168, 128, 0.15);
+                border-color: var(--gold);
+                color: var(--gold);
+            }
+
+            /* ── Hamburger toggle button ── */
+            .mobile-menu-toggle,
+            .mobile-menu-toggle:focus,
+            .mobile-menu-toggle:hover,
+            .mobile-menu-toggle:active {
+                display: flex !important;
+                background: transparent !important;
+                border: none !important;
+                color: var(--navy) !important;
+                outline: none !important;
+                box-shadow: none !important;
+                -webkit-appearance: none !important;
+                appearance: none !important;
+            }
+            
+            body.dark-mode .mobile-menu-toggle,
+            body.dark-mode .mobile-menu-toggle:focus,
+            body.dark-mode .mobile-menu-toggle:hover,
+            body.dark-mode .mobile-menu-toggle:active {
+                color: #ffffff !important;
+            }
+
+            /* ── Header actions hidden on mobile ── */
+            .header-actions {
+                display: none !important;
+            }
+
+            /* ── Hide the mobile-login-container (we replaced it) ── */
+            .mobile-login-container {
+                display: none !important;
+            }
+
+            /* ── Overlay backdrop ── */
+            #h2-nav-overlay {
+                position: fixed;
+                inset: 0;
+                background: transparent;
+                z-index: 998;
+                display: none;
+            }
+
+            #h2-nav-overlay.h2-show {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════ HEADER ════════════════════════════════════════════ -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <i class="ph-fill ph-buildings logo-icon"></i>
+                <div class="logo-text">
+                    <span class="logo-title">ArchStruct</span>
+                    <span class="logo-subtitle">Design Firm</span>
+                </div>
+            </a>
+                    <nav class="nav-links" id="h2NavSidebar">
+
+                <!-- Sidebar Header: Logo + Close -->
+                <div class="h2-sidebar-head">
+                    <a href="index.html" class="logo">
+                        <i class="ph-fill ph-buildings logo-icon"></i>
+                        <div class="logo-text">
+                            <span class="logo-title">ArchStruct</span>
+                            <span class="logo-subtitle" style="color:var(--gold);">Design Firm</span>
+                        </div>
+                    </a>
+                    <button class="h2-close-btn" id="h2CloseBtn" aria-label="Close menu">
+                        <i class="ph-bold ph-x"></i>
+                    </button>
+                </div>
+
+                <!-- Scrollable Nav Links -->
+                <div class="h2-nav-body">
+                    <div class="nav-dropdown">
+                        <a href="home2.html" class="active">
+                            <i class="ph-bold ph-house mobile-nav-icon"></i>
+                            Home
+                            <i class="ph-bold ph-caret-down" style="font-size:0.8em;"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="index.html"><i class="ph-bold ph-house"
+                                    style="font-size:0.85em; color:var(--gold);"></i> Home 1 (Aurora)</a>
+                            <a href="home2.html"><i class="ph-bold ph-sparkle"
+                                    style="font-size:0.85em; color:var(--gold);"></i> Home 2 (Immersive)</a>
+                        </div>
+                    </div>
+                    <a href="about.html"><i class="ph-bold ph-info mobile-nav-icon"></i> About</a>
+                    <a href="services.html"><i class="ph-bold ph-compass mobile-nav-icon"></i> Services</a>
+                    <a href="portfolio.html"><i class="ph-bold ph-image mobile-nav-icon"></i> Portfolio</a>
+                    <a href="interactive-3d.html"><i class="ph-bold ph-cube mobile-nav-icon"></i> 3D Viewer</a>
+                    <a href="contact.html"><i class="ph-bold ph-phone mobile-nav-icon"></i> Contact</a>
+                    <div class="nav-dropdown">
+                        <a href="#">
+                            <i class="ph-bold ph-layout mobile-nav-icon"></i>
+                            Dashboards
+                            <i class="ph-bold ph-caret-down" style="font-size:0.8em;"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="client-dashboard.html"><i class="ph-bold ph-user"
+                                    style="font-size:0.85em; color:var(--gold);"></i> Client Dashboard</a>
+                            <a href="admin-dashboard.html"><i class="ph-bold ph-shield"
+                                    style="font-size:0.85em; color:var(--gold);"></i> Admin Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Footer: Login + Toggles -->
+                <div class="h2-sidebar-foot">
+                    <div class="h2-toggle-row">
+                        <button class="h2-toggle-btn" id="h2ThemeToggle" aria-label="Toggle Dark Mode">
+                            <i class="ph-bold ph-moon" id="h2ThemeIcon"></i> Dark Mode
+                        </button>
+                        <button class="h2-toggle-btn" id="h2RtlToggle" aria-label="Toggle RTL">
+                            <i class="ph-bold ph-text-align-right"></i> RTL
+                        </button>
+                    </div>
+                    <a href="login.html" class="btn btn-gold">Login <i class="ph-bold ph-sign-in"></i></a>
+                </div>
+
+            </nav>
+        <div class="header-actions">
+            <div class="toggle-group">
+                <button id="theme-toggle" class="toggle-btn" aria-label="Toggle Dark Mode"><i
+                        class="ph-bold ph-moon"></i></button>
+                <div class="toggle-divider"></div>
+                <button id="rtl-toggle" class="toggle-btn toggle-rtl" aria-label="Toggle RTL">RTL</button>
+            </div>
+            <a href="login.html" class="btn btn-primary">Login <i
+                    class="ph-bold ph-sign-in"></i></a>
+        </div>
+        <button class="mobile-menu-toggle" aria-label="Open menu"><i class="ph-bold ph-list"></i></button>
+    </div>
+    </header>
+
+    <!-- ═══════ HERO BANNER ══════════════════════════════════════ -->
+    <section style="background:var(--navy-dark);padding:6rem 0 3rem;position:relative;overflow:hidden;">
+        <div
+            style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%, rgba(197,168,128,0.08) 0%, transparent 60%);pointer-events:none;">
+        </div>
+        <div class="container" style="position:relative;z-index:1;text-align:center;">
+            <div class="section-label" style="color:var(--gold);justify-content:center;"><span class="label-line"
+                    style="background:var(--gold);"></span> IMMERSIVE EXPERIENCE <span class="label-line"
+                    style="background:var(--gold);"></span></div>
+            <h1
+                style="color:#ffffff;font-size:clamp(2rem,4vw,3.5rem);font-weight:800;margin-top:1rem;letter-spacing:-0.03em;">
+                Interactive 3D Viewer</h1>
+            <p
+                style="color:rgba(255,255,255,0.5);max-width:600px;margin:1rem auto 0;font-size:1.05rem;line-height:1.7;">
+                Explore our architectural designs in full 3D. Rotate, zoom, and inspect every detail from any angle.</p>
+        </div>
+    </section>
+
+    <!-- ═══════ 3D MODEL SELECTOR ════════════════════════════════ -->
+    <section style="padding:4rem 0 5rem;background:var(--off-white);">
+        <div class="container">
+
+            <!-- Model Selection Cards -->
+            <div class="viewer3d-selector" id="modelSelector">
+                <button class="viewer3d-card active"
+                    data-model="https://raw.githubusercontent.com/mrdoob/three.js/master/examples/models/gltf/LittlestTokyo.glb"
+                    data-name="Tokyo District"
+                    data-desc="An intricately detailed urban district diorama featuring traditional Japanese architecture with modern elements.">
+                    <div class="viewer3d-card-icon"><i class="ph-fill ph-buildings"></i></div>
+                    <div class="viewer3d-card-info">
+                        <div class="viewer3d-card-title">Tokyo District</div>
+                        <div class="viewer3d-card-desc">Urban District Diorama</div>
+                    </div>
+                    <div class="viewer3d-card-check"><i class="ph-fill ph-check-circle"></i></div>
+                </button>
+                <button class="viewer3d-card" data-model="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+                    data-name="Space Explorer"
+                    data-desc="A high-fidelity astronaut model demonstrating advanced material rendering and realistic surface textures.">
+                    <div class="viewer3d-card-icon" style="background:rgba(96,165,250,0.1);color:#60A5FA;"><i
+                            class="ph-fill ph-rocket"></i></div>
+                    <div class="viewer3d-card-info">
+                        <div class="viewer3d-card-title">Space Explorer</div>
+                        <div class="viewer3d-card-desc">Material & Texture Demo</div>
+                    </div>
+                    <div class="viewer3d-card-check"><i class="ph-fill ph-check-circle"></i></div>
+                </button>
+                <button class="viewer3d-card"
+                    data-model="https://modelviewer.dev/shared-assets/models/glTF-Sample-Assets/Models/Lantern/glTF-Binary/Lantern.glb"
+                    data-name="Antique Lantern"
+                    data-desc="A beautifully crafted antique lantern showcasing intricate metalwork, glass panels, and realistic lighting.">
+                    <div class="viewer3d-card-icon" style="background:rgba(251,191,36,0.1);color:#FBBF24;"><i
+                            class="ph-fill ph-lamp"></i></div>
+                    <div class="viewer3d-card-info">
+                        <div class="viewer3d-card-title">Antique Lantern</div>
+                        <div class="viewer3d-card-desc">Lighting & Detail Study</div>
+                    </div>
+                    <div class="viewer3d-card-check"><i class="ph-fill ph-check-circle"></i></div>
+                </button>
+            </div>
+
+            <!-- Viewer Container -->
+            <div class="viewer3d-container reveal">
+                <div class="viewer3d-header">
+                    <div>
+                        <h2 id="modelTitle"
+                            style="font-size:1.25rem;font-weight:700;color:var(--text-dark);margin-bottom:0.25rem;">
+                            Tokyo District</h2>
+                        <p id="modelDesc" style="font-size:0.9rem;color:var(--text-light);margin:0;">An intricately
+                            detailed urban district diorama featuring traditional Japanese architecture with modern
+                            elements.</p>
+                    </div>
+                    <div class="viewer3d-controls">
+                        <button id="btnAutoRotate" class="viewer3d-ctrl-btn active" title="Auto Rotate"><i
+                                class="ph-bold ph-arrows-clockwise"></i></button>
+                        <button id="btnResetCamera" class="viewer3d-ctrl-btn" title="Reset Camera"><i
+                                class="ph-bold ph-arrow-counter-clockwise"></i></button>
+                        <button id="btnFullscreen" class="viewer3d-ctrl-btn" title="Fullscreen"><i
+                                class="ph-bold ph-arrows-out"></i></button>
+                    </div>
+                </div>
+                <div class="viewer3d-canvas" id="viewerCanvas">
+                    <model-viewer id="mainModelViewer"
+                        src="https://raw.githubusercontent.com/mrdoob/three.js/master/examples/models/gltf/LittlestTokyo.glb"
+                        alt="Interactive 3D Architectural Model" auto-rotate camera-controls disable-zoom shadow-intensity="1.2"
+                        environment-image="neutral" exposure="1" style="width:100%;height:100%;outline:none;">
+                        <div class="viewer3d-loading" slot="poster">
+                            <div class="viewer3d-spinner"></div>
+                            <span>Loading 3D Model...</span>
+                        </div>
+                    </model-viewer>
+                    <div class="viewer3d-hint">
+                        <i class="ph-bold ph-mouse"></i> Drag to rotate &nbsp;·&nbsp; Scroll to zoom &nbsp;·&nbsp;
+                        Right-click to pan
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="interactive-features-grid reveal">
+                <div style="text-align:center;padding:2rem;">
+                    <div
+                        style="width:60px;height:60px;border-radius:var(--r-lg);background:rgba(197,168,128,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;color:var(--gold);">
+                        <i class="ph-fill ph-cube"></i></div>
+                    <h3 style="font-size:1.1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;">360°
+                        Exploration</h3>
+                    <p style="color:var(--text-light);font-size:0.9rem;line-height:1.7;">Rotate and inspect every angle
+                        of our architectural models with intuitive mouse and touch controls.</p>
+                </div>
+                <div style="text-align:center;padding:2rem;">
+                    <div
+                        style="width:60px;height:60px;border-radius:var(--r-lg);background:rgba(96,165,250,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;color:#60A5FA;">
+                        <i class="ph-fill ph-magnifying-glass-plus"></i></div>
+                    <h3 style="font-size:1.1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;">Zoom Into
+                        Details</h3>
+                    <p style="color:var(--text-light);font-size:0.9rem;line-height:1.7;">Scroll to zoom in and out,
+                        revealing intricate material finishes, textures, and construction details.</p>
+                </div>
+                <div style="text-align:center;padding:2rem;">
+                    <div
+                        style="width:60px;height:60px;border-radius:var(--r-lg);background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;color:#10B981;">
+                        <i class="ph-fill ph-sun"></i></div>
+                    <h3 style="font-size:1.1rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;">Realistic
+                        Lighting</h3>
+                    <p style="color:var(--text-light);font-size:0.9rem;line-height:1.7;">Experience photorealistic
+                        lighting and shadow rendering that brings our designs to life on screen.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!-- ═══════ FOOTER ═══════════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="margin-bottom:var(--s2);">
+                        <i class="ph-fill ph-buildings logo-icon" style="color:#ffffff;"></i>
+                        <div class="logo-text"><span class="logo-title" style="color:#ffffff;">ArchStruct</span><span
+                                class="logo-subtitle">Design Firm</span></div>
+                    </a>
+                    <p>Delivering visionary architecture, precision structural engineering, and immersive 3D design
+                        experiences — globally.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="ph-fill ph-twitter-logo"></i></a>
+                        <a href="#" aria-label="Behance"><i class="ph-fill ph-behance-logo"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="interactive-3d.html" class="active">3D Viewer</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="services.html">Architectural Design</a></li>
+                        <li><a href="services.html">Structural Engineering</a></li>
+                        <li><a href="services.html">3D Visualization</a></li>
+                        <li><a href="services.html">Project Management</a></li>
+                        <li><a href="login.html">Client Portal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact</h5>
+                    <ul class="footer-contact">
+                        <li><i class="ph-fill ph-map-pin"></i> 100 Skyline Blvd, Suite 400<br>Metropolis, NY 10001</li>
+                        <li><i class="ph-fill ph-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="ph-fill ph-envelope"></i> design@archstruct.com</li>
+                        <li><i class="ph-fill ph-clock"></i> Mon–Fri, 9AM–6PM EST</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ArchStruct Design Firm. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/mobile-nav.js"></script>
+    <script>
+        // ─── 3D Viewer Page Logic ─────────────────────────────────────────────────
+        (function () {
+            const viewer = document.getElementById('mainModelViewer');
+            const cards = document.querySelectorAll('.viewer3d-card');
+            const titleEl = document.getElementById('modelTitle');
+            const descEl = document.getElementById('modelDesc');
+            const btnAutoRotate = document.getElementById('btnAutoRotate');
+            const btnResetCamera = document.getElementById('btnResetCamera');
+            const btnFullscreen = document.getElementById('btnFullscreen');
+
+            // Model selection
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    cards.forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+
+                    const modelUrl = card.getAttribute('data-model');
+                    const modelName = card.getAttribute('data-name');
+                    const modelDescText = card.getAttribute('data-desc');
+
+                    viewer.src = modelUrl;
+                    titleEl.textContent = modelName;
+                    descEl.textContent = modelDescText;
+                });
+            });
+
+            // Auto-rotate toggle
+            if (btnAutoRotate) {
+                btnAutoRotate.addEventListener('click', () => {
+                    const isRotating = viewer.hasAttribute('auto-rotate');
+                    if (isRotating) {
+                        viewer.removeAttribute('auto-rotate');
+                        btnAutoRotate.classList.remove('active');
+                    } else {
+                        viewer.setAttribute('auto-rotate', '');
+                        btnAutoRotate.classList.add('active');
+                    }
+                });
+            }
+
+            // Reset camera
+            if (btnResetCamera) {
+                btnResetCamera.addEventListener('click', () => {
+                    viewer.cameraOrbit = 'auto auto auto';
+                    viewer.cameraTarget = 'auto auto auto';
+                    viewer.fieldOfView = 'auto';
+                });
+            }
+
+            // Fullscreen toggle
+            if (btnFullscreen) {
+                btnFullscreen.addEventListener('click', () => {
+                    const canvas = document.getElementById('viewerCanvas');
+                    if (!document.fullscreenElement) {
+                        canvas.requestFullscreen();
+                    } else {
+                        document.exitFullscreen();
+                    }
+                });
+            }
+        })();
+    </script>
+
+    <style>
+        /* ─── 3D Viewer Page Styles ─────────────────────────────────────────────── */
+        .viewer3d-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .viewer3d-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--white);
+            border: 2px solid var(--border);
+            border-radius: var(--r-lg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            position: relative;
+            font-family: var(--font);
+        }
+
+        .viewer3d-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 4px 20px rgba(197, 168, 128, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .viewer3d-card.active {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, rgba(197, 168, 128, 0.06) 0%, rgba(197, 168, 128, 0.02) 100%);
+            box-shadow: 0 4px 24px rgba(197, 168, 128, 0.2);
+        }
+
+        .viewer3d-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--r-md);
+            background: rgba(197, 168, 128, 0.1);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .viewer3d-card-info {
+            flex: 1;
+        }
+
+        .viewer3d-card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.15rem;
+        }
+
+        .viewer3d-card-desc {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .viewer3d-card-check {
+            font-size: 1.3rem;
+            color: var(--border);
+            transition: color 0.3s;
+        }
+
+        .viewer3d-card.active .viewer3d-card-check {
+            color: var(--gold);
+        }
+
+        .viewer3d-container {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--r-xl);
+            overflow: hidden;
+            box-shadow: var(--sh-lg);
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .viewer3d-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .viewer3d-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .viewer3d-ctrl-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--r-md);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-mid);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .viewer3d-ctrl-btn:hover {
+            background: var(--gold);
+            color: var(--navy-dark);
+            border-color: var(--gold);
+        }
+
+        .viewer3d-ctrl-btn.active {
+            background: rgba(197, 168, 128, 0.15);
+            border-color: var(--gold);
+            color: var(--gold-dark);
+        }
+
+        .viewer3d-canvas {
+            position: relative;
+            height: 75vh;
+            min-height: 500px;
+            background: var(--surface);
+        }
+
+        .viewer3d-canvas:fullscreen {
+            height: 100vh;
+            background: #0a0f1a;
+        }
+
+        .viewer3d-hint {
+            position: absolute;
+            bottom: 1.25rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(13, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--r-pill);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .viewer3d-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            gap: 1rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .viewer3d-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin3d 0.8s linear infinite;
+        }
+
+        @keyframes spin3d {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .viewer3d-selector {
+                grid-template-columns: 1fr;
+            }
+
+            .viewer3d-canvas {
+                height: 350px;
+            }
+
+            .viewer3d-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .viewer3d-hint {
+                width: 85%;
+                border-radius: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
+                padding: 0.75rem;
+                line-height: 1.6;
+            }
+        }
+    </style>
+<script>
+        // ── Home 2 Sidebar Logic ported to Home 1 ─────────────────────────────────────
+        (function () {
+            const sidebar = document.getElementById('h2NavSidebar');
+            const hamburger = document.querySelector('.mobile-menu-toggle');
+            const closeBtn = document.getElementById('h2CloseBtn');
+            const themeBtn = document.getElementById('h2ThemeToggle');
+            const themeIcon = document.getElementById('h2ThemeIcon');
+            const rtlBtn = document.getElementById('h2RtlToggle');
+
+            if (!sidebar || !hamburger) return; // safety check
+
+            // ── Overlay ─────────────────────────────────────────────────────
+            const overlay = document.createElement('div');
+            overlay.id = 'h2-nav-overlay';
+            document.querySelector('.header').appendChild(overlay);
+
+            function openSidebar() {
+                sidebar.classList.add('h2-open');
+                overlay.classList.add('h2-show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeSidebar() {
+                sidebar.classList.remove('h2-open');
+                overlay.classList.remove('h2-show');
+                document.body.style.overflow = '';
+            }
+
+            hamburger.addEventListener('click', openSidebar);
+            if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+            overlay.addEventListener('click', closeSidebar);
+
+            // ── Dropdown accordion ───────────────────────────────────────────
+            sidebar.querySelectorAll('.nav-dropdown > a').forEach(trigger => {
+                trigger.addEventListener('click', function (e) {
+                    const menu = this.nextElementSibling;
+                    if (!menu || !menu.classList.contains('dropdown-menu')) return;
+                    e.preventDefault();
+                    const parent = this.parentElement;
+                    const isOpen = parent.classList.contains('h2-dd-open');
+                    sidebar.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('h2-dd-open'));
+                    if (!isOpen) parent.classList.add('h2-dd-open');
+                });
+            });
+
+            // Close sidebar when a leaf link is clicked
+            sidebar.querySelectorAll('.dropdown-menu a, .h2-nav-body > a').forEach(a => {
+                a.addEventListener('click', closeSidebar);
+            });
+
+            // ── Dark Mode toggle (sidebar) ──────────────────────────────────
+            function syncThemeBtn() {
+                const dark = document.body.classList.contains('dark-mode');
+                if (themeIcon) themeIcon.className = dark ? 'ph-bold ph-sun' : 'ph-bold ph-moon';
+                if (themeBtn) {
+                    themeBtn.childNodes[1].textContent = dark ? ' Light Mode' : ' Dark Mode';
+                    themeBtn.classList.toggle('h2-active', dark);
+                }
+            }
+
+            if (themeBtn) {
+                syncThemeBtn();
+                themeBtn.addEventListener('click', () => {
+                    document.body.classList.toggle('dark-mode');
+                    const dark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('theme', dark ? 'dark' : 'light');
+                    syncThemeBtn();
+                });
+            }
+
+            // ── RTL toggle (sidebar) ────────────────────────────────────────
+            function syncRtlBtn() {
+                const rtl = document.documentElement.getAttribute('dir') === 'rtl';
+                if (rtlBtn) rtlBtn.classList.toggle('h2-active', rtl);
+            }
+
+            if (rtlBtn) {
+                syncRtlBtn();
+                rtlBtn.addEventListener('click', () => {
+                    const rtl = document.documentElement.getAttribute('dir') === 'rtl';
+                    document.documentElement.setAttribute('dir', rtl ? 'ltr' : 'rtl');
+                    localStorage.setItem('dir', rtl ? 'ltr' : 'rtl');
+                    syncRtlBtn();
+                });
+            }
+
+            // ── Init state from localStorage ────────────────────────────────
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                syncThemeBtn();
+            }
+            if (localStorage.getItem('dir') === 'rtl') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                syncRtlBtn();
+            }
+        })();
+    </script>
+</body>
+
+</html>
+
+

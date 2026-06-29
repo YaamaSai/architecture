@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | ArchStruct Design Firm</title>
+    <meta name="description"
+        content="Get in touch with ArchStruct. Schedule a consultation with our team of architects and engineers to discuss your next project.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/luxury.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+<style>
+        /* ═══════════════════════════════════════════════════
+           HOME 2 — PREMIUM MOBILE / TABLET NAV (≤ 1024px)
+           Desktop (> 1024px) is 100% untouched.
+        ═══════════════════════════════════════════════════ */
+        @media (max-width: 1023px) {
+
+            /* ── Footer-style logo in the main header navbar ── */
+            header.header .logo {
+                display: flex !important;
+                align-items: center !important;
+                gap: 0.6rem !important;
+                text-decoration: none !important;
+            }
+
+            header.header .logo .logo-icon {
+                font-size: 2rem !important;
+                color: var(--navy) !important;
+                line-height: 1 !important;
+                flex-shrink: 0 !important;
+            }
+
+            header.header .logo .logo-text {
+                display: flex !important;
+                flex-direction: column !important;
+                line-height: 1.1 !important;
+            }
+
+            header.header .logo .logo-title {
+                font-size: 1.5rem !important;
+                font-weight: 800 !important;
+                color: var(--navy) !important;
+                letter-spacing: -0.02em !important;
+                line-height: 1 !important;
+            }
+
+            body.dark-mode header.header .logo .logo-title {
+                color: var(--text-dark) !important;
+            }
+
+            header.header .logo .logo-subtitle {
+                font-size: 0.8rem !important;
+                font-weight: 600 !important;
+                letter-spacing: 1.5px !important;
+                text-transform: uppercase !important;
+                color: var(--gold-dark) !important;
+                line-height: 1 !important;
+            }
+
+            /* ── Same standard logo inside the sidebar ── */
+            .h2-sidebar-head .logo .logo-icon {
+                font-size: 2rem !important;
+                color: var(--navy) !important;
+                flex-shrink: 0 !important;
+            }
+
+            .h2-sidebar-head .logo .logo-text {
+                display: flex !important;
+                flex-direction: column !important;
+                line-height: 1.1 !important;
+            }
+
+            .h2-sidebar-head .logo .logo-title {
+                font-size: 1.5rem !important;
+                font-weight: 800 !important;
+                color: var(--navy) !important;
+                letter-spacing: -0.02em !important;
+                line-height: 1 !important;
+            }
+
+            body.dark-mode .h2-sidebar-head .logo .logo-title {
+                color: var(--text-dark) !important;
+            }
+
+            .h2-sidebar-head .logo .logo-subtitle {
+                font-size: 0.8rem !important;
+                font-weight: 600 !important;
+                letter-spacing: 1.5px !important;
+                text-transform: uppercase !important;
+                color: var(--gold-dark) !important;
+                line-height: 1 !important;
+            }
+
+            html, body {
+                overflow-x: hidden !important;
+                width: 100%;
+            }
+
+            nav.nav-links {
+                position: fixed !important;
+                top: 0 !important;
+                right: 0 !important;
+                width: 70% !important;
+                max-width: 70% !important;
+                bottom: 0 !important;
+                height: 100dvh !important;
+                background: #ffffff !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0 !important;
+                padding: 0 !important;
+                transform: translateX(110%) !important;
+                visibility: hidden !important;
+                transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0.38s !important;
+                z-index: 10000 !important;
+                box-shadow: -8px 0 40px rgba(0, 0, 0, 0.18) !important;
+                border-radius: 0 !important;
+                overflow: hidden !important;
+            }
+
+            body.dark-mode nav.nav-links {
+                background: #111111 !important;
+            }
+
+            nav.nav-links.h2-open {
+                transform: translateX(0) !important;
+                visibility: visible !important;
+                transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0s !important;
+            }
+
+            /* ── Sidebar header (logo + close btn) ── */
+            .h2-sidebar-head {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1.25rem 1.5rem 1.25rem 1.5rem;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+                background: #ffffff;
+                flex-shrink: 0;
+            }
+
+            body.dark-mode .h2-sidebar-head {
+                background: #111111;
+                border-bottom-color: rgba(255, 255, 255, 0.07);
+            }
+
+            .h2-sidebar-head .logo {
+                display: flex !important;
+                align-items: center;
+                gap: 0.5rem;
+                text-decoration: none;
+            }
+
+            .h2-sidebar-head .logo-title {
+                font-size: 1.1rem !important;
+                font-weight: 800;
+                color: #1a1a1a !important;
+            }
+
+            body.dark-mode .h2-sidebar-head .logo-title {
+                color: #ffffff !important;
+            }
+
+            .h2-sidebar-head .logo .logo-icon {
+                font-size: 1.8rem !important;
+                color: var(--gold) !important;
+            }
+
+            /* Hide original mobile-menu-header — we use h2-sidebar-head */
+            .mobile-menu-header {
+                display: none !important;
+            }
+
+            /* ── Close button ── */
+            .h2-close-btn {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: rgba(0, 0, 0, 0.06);
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                color: #1a1a1a;
+                font-size: 1.2rem;
+                transition: background 0.2s, transform 0.2s;
+                flex-shrink: 0;
+            }
+
+            body.dark-mode .h2-close-btn {
+                background: rgba(255, 255, 255, 0.1);
+                color: #ffffff;
+            }
+
+            .h2-close-btn:hover {
+                background: rgba(197, 168, 128, 0.15);
+                color: var(--gold);
+                transform: rotate(90deg);
+            }
+
+            /* ── Scrollable nav body ── */
+            .h2-nav-body {
+                flex: 1;
+                overflow-y: auto;
+                padding: 0.75rem 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .h2-nav-body::-webkit-scrollbar {
+                width: 4px;
+            }
+
+            .h2-nav-body::-webkit-scrollbar-thumb {
+                background: var(--gold);
+                border-radius: 2px;
+            }
+
+            /* ── Nav links inside sidebar ── */
+            nav.nav-links a {
+                display: flex !important;
+                align-items: center !important;
+                gap: 0.75rem !important;
+                padding: 0.9rem 1.5rem !important;
+                font-size: 0.95rem !important;
+                font-weight: 600 !important;
+                color: #333333 !important;
+                border-radius: 0 !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+                transition: background 0.18s, color 0.18s, padding-left 0.18s !important;
+                width: 100% !important;
+                background: transparent !important;
+            }
+
+            body.dark-mode nav.nav-links a {
+                color: #cccccc !important;
+                border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+            }
+
+            nav.nav-links a:hover {
+                background: rgba(197, 168, 128, 0.08) !important;
+                color: var(--gold) !important;
+                padding-left: 2rem !important;
+            }
+
+            nav.nav-links a.active {
+                color: #ffffff !important;
+                background: var(--navy) !important;
+                border-left: 3px solid var(--navy) !important;
+                padding-left: calc(1.5rem - 3px) !important;
+            }
+
+            /* Icons visible on mobile */
+            .mobile-nav-icon {
+                display: inline-block !important;
+                font-size: 1rem;
+                color: var(--gold);
+                flex-shrink: 0;
+            }
+
+            /* ── Dropdown accordion ── */
+            .nav-dropdown {
+                width: 100% !important;
+                position: static !important;
+            }
+
+            .nav-dropdown>a {
+                position: relative !important;
+            }
+
+            .nav-dropdown>a .ph-caret-down {
+                margin-left: auto !important;
+                flex-shrink: 0;
+                transition: transform 0.3s ease;
+                opacity: 0.6;
+            }
+
+            .nav-dropdown.h2-dd-open>a .ph-caret-down {
+                transform: rotate(180deg);
+                opacity: 1;
+                color: var(--gold);
+            }
+
+            .dropdown-menu {
+                position: static !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                box-shadow: none !important;
+                background: rgba(0, 0, 0, 0.03) !important;
+                border: none !important;
+                padding: 0 !important;
+                min-width: unset !important;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.32s ease;
+                border-radius: 0 !important;
+            }
+
+            body.dark-mode .dropdown-menu {
+                background: rgba(255, 255, 255, 0.03) !important;
+            }
+
+            .nav-dropdown.h2-dd-open .dropdown-menu {
+                max-height: 300px;
+            }
+
+            .dropdown-menu a {
+                padding: 0.75rem 1.5rem 0.75rem 3rem !important;
+                font-size: 0.88rem !important;
+                font-weight: 500 !important;
+                color: #555555 !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
+                border-radius: 0 !important;
+                display: flex !important;
+                gap: 0.5rem !important;
+            }
+
+            body.dark-mode .dropdown-menu a {
+                color: #999999 !important;
+                border-bottom-color: rgba(255, 255, 255, 0.04) !important;
+            }
+
+            .dropdown-menu a:hover {
+                background: rgba(197, 168, 128, 0.1) !important;
+                color: var(--gold) !important;
+                padding-left: 3.5rem !important;
+            }
+
+            /* ── Sidebar footer (login + toggles) ── */
+            .h2-sidebar-foot {
+                flex-shrink: 0;
+                padding: 1rem 1.5rem 1.5rem;
+                border-top: 1px solid rgba(0, 0, 0, 0.08);
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                background: #ffffff;
+            }
+
+            body.dark-mode .h2-sidebar-foot {
+                background: #111111;
+                border-top-color: rgba(255, 255, 255, 0.07);
+            }
+
+            .h2-sidebar-foot .btn {
+                width: 100% !important;
+                justify-content: center !important;
+                font-size: 0.95rem !important;
+                padding: 0.8rem 1.5rem !important;
+            }
+
+            /* ── Toggle row (dark + RTL) inside sidebar ── */
+            .h2-toggle-row {
+                display: flex;
+                gap: 0.75rem;
+                width: 100%;
+            }
+
+            .h2-toggle-btn {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                padding: 0.65rem 0.75rem;
+                border-radius: 10px;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                background: rgba(0, 0, 0, 0.03);
+                color: #444444;
+                font-size: 0.82rem;
+                font-weight: 700;
+                cursor: pointer;
+                transition: all 0.2s;
+                font-family: inherit;
+            }
+
+            body.dark-mode .h2-toggle-btn {
+                border-color: rgba(255, 255, 255, 0.1);
+                background: rgba(255, 255, 255, 0.05);
+                color: #aaaaaa;
+            }
+
+            .h2-toggle-btn:hover,
+            .h2-toggle-btn.h2-active {
+                background: rgba(197, 168, 128, 0.15);
+                border-color: var(--gold);
+                color: var(--gold);
+            }
+
+            /* ── Hamburger toggle button ── */
+            .mobile-menu-toggle,
+            .mobile-menu-toggle:focus,
+            .mobile-menu-toggle:hover,
+            .mobile-menu-toggle:active {
+                display: flex !important;
+                background: transparent !important;
+                border: none !important;
+                color: var(--navy) !important;
+                outline: none !important;
+                box-shadow: none !important;
+                -webkit-appearance: none !important;
+                appearance: none !important;
+            }
+            
+            body.dark-mode .mobile-menu-toggle,
+            body.dark-mode .mobile-menu-toggle:focus,
+            body.dark-mode .mobile-menu-toggle:hover,
+            body.dark-mode .mobile-menu-toggle:active {
+                color: #ffffff !important;
+            }
+
+            /* ── Header actions hidden on mobile ── */
+            .header-actions {
+                display: none !important;
+            }
+
+            /* ── Hide the mobile-login-container (we replaced it) ── */
+            .mobile-login-container {
+                display: none !important;
+            }
+
+            /* ── Overlay backdrop ── */
+            #h2-nav-overlay {
+                position: fixed;
+                inset: 0;
+                background: transparent;
+                z-index: 998;
+                display: none;
+            }
+
+            #h2-nav-overlay.h2-show {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><i class="ph-fill ph-buildings logo-icon"></i>
+                <div class="logo-text"><span class="logo-title">ArchStruct</span><span class="logo-subtitle">Design
+                        Firm</span></div>
+            </a>
+            <nav class="nav-links" id="h2NavSidebar">
+
+                <!-- Sidebar Header: Logo + Close -->
+                <div class="h2-sidebar-head">
+                    <a href="index.html" class="logo">
+                        <i class="ph-fill ph-buildings logo-icon"></i>
+                        <div class="logo-text">
+                            <span class="logo-title">ArchStruct</span>
+                            <span class="logo-subtitle" style="color:var(--gold);">Design Firm</span>
+                        </div>
+                    </a>
+                    <button class="h2-close-btn" id="h2CloseBtn" aria-label="Close menu">
+                        <i class="ph-bold ph-x"></i>
+                    </button>
+                </div>
+
+                <!-- Scrollable Nav Links -->
+                <div class="h2-nav-body">
+                    <div class="nav-dropdown">
+                        <a href="home2.html" class="active">
+                            <i class="ph-bold ph-house mobile-nav-icon"></i>
+                            Home
+                            <i class="ph-bold ph-caret-down" style="font-size:0.8em;"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="index.html"><i class="ph-bold ph-house"
+                                    style="font-size:0.85em; color:var(--gold);"></i> Home 1 (Aurora)</a>
+                            <a href="home2.html"><i class="ph-bold ph-sparkle"
+                                    style="font-size:0.85em; color:var(--gold);"></i> Home 2 (Immersive)</a>
+                        </div>
+                    </div>
+                    <a href="about.html"><i class="ph-bold ph-info mobile-nav-icon"></i> About</a>
+                    <a href="services.html"><i class="ph-bold ph-compass mobile-nav-icon"></i> Services</a>
+                    <a href="portfolio.html"><i class="ph-bold ph-image mobile-nav-icon"></i> Portfolio</a>
+                    <a href="interactive-3d.html"><i class="ph-bold ph-cube mobile-nav-icon"></i> 3D Viewer</a>
+                    <a href="contact.html"><i class="ph-bold ph-phone mobile-nav-icon"></i> Contact</a>
+                    <div class="nav-dropdown">
+                        <a href="#">
+                            <i class="ph-bold ph-layout mobile-nav-icon"></i>
+                            Dashboards
+                            <i class="ph-bold ph-caret-down" style="font-size:0.8em;"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="client-dashboard.html"><i class="ph-bold ph-user"
+                                    style="font-size:0.85em; color:var(--gold);"></i> Client Dashboard</a>
+                            <a href="admin-dashboard.html"><i class="ph-bold ph-shield"
+                                    style="font-size:0.85em; color:var(--gold);"></i> Admin Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Footer: Login + Toggles -->
+                <div class="h2-sidebar-foot">
+                    <div class="h2-toggle-row">
+                        <button class="h2-toggle-btn" id="h2ThemeToggle" aria-label="Toggle Dark Mode">
+                            <i class="ph-bold ph-moon" id="h2ThemeIcon"></i> Dark Mode
+                        </button>
+                        <button class="h2-toggle-btn" id="h2RtlToggle" aria-label="Toggle RTL">
+                            <i class="ph-bold ph-text-align-right"></i> RTL
+                        </button>
+                    </div>
+                    <a href="login.html" class="btn btn-gold">Login <i class="ph-bold ph-sign-in"></i></a>
+                </div>
+
+            </nav>
+            <div class="header-actions">
+                <div class="toggle-group"><button id="theme-toggle" class="toggle-btn"><i
+                            class="ph-bold ph-moon"></i></button>
+                    <div class="toggle-divider"></div><button id="rtl-toggle" class="toggle-btn toggle-rtl">RTL</button>
+                </div>
+                <a href="login.html" class="btn btn-primary">Login <i
+                        class="ph-bold ph-sign-in"></i></a>
+            </div>
+            <button class="mobile-menu-toggle"><i class="ph-bold ph-list"></i></button>
+        </div>
+    </header>
+
+    <!-- SECTION 1: Hero -->
+    <section class="page-hero"
+        style="background-image:url('https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=2000&q=80');">
+        <div class="container">
+            <div class="page-hero-inner">
+                <div>
+                    <div class="breadcrumb"><a href="index.html">Home</a><i
+                            class="ph-bold ph-caret-right"></i><span>Contact</span></div>
+                    <div class="section-label"
+                        style="background:rgba(197,168,128,0.15);border-color:rgba(197,168,128,0.3);color:var(--gold-light);">
+                        <i class="ph-fill ph-phone"></i> Let's Talk</div>
+                    <h1>Start the<br>Conversation.</h1>
+                    <p style="color:rgba(255,255,255,0.65);font-size:1.1rem;margin-top:var(--s2);">Whether you have a
+                        fully formed brief or just the seed of an idea — our team of architects and engineers are ready
+                        to listen, advise, and help bring your vision to life.</p>
+                </div>
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80"
+                    alt="Contact ArchStruct" class="page-hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Contact Form + Info -->
+    <section class="section" style="background:var(--off-white);">
+        <div class="container">
+            <div class="contact-split">
+                <!-- Left: Info -->
+                <div>
+                    <div class="section-label"><i class="ph-fill ph-map-pin"></i> Reach Us</div>
+                    <h2>How to Get in Touch</h2>
+                    <p>Our team responds to all enquiries within one business day. For urgent matters, please call our
+                        main line directly.</p>
+
+                    <div class="contact-info-card" style="margin-top:var(--s4);">
+                        <div class="contact-info-item">
+                            <div class="ci-icon"><i class="ph-fill ph-map-pin"></i></div>
+                            <div>
+                                <div class="ci-label">Headquarters</div>
+                                <div class="ci-value">100 Skyline Blvd, Suite 400<br>Metropolis, New York 10001</div>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="ci-icon"><i class="ph-fill ph-phone"></i></div>
+                            <div>
+                                <div class="ci-label">Main Line</div>
+                                <div class="ci-value">+1 (555) 123-4567</div>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="ci-icon"><i class="ph-fill ph-envelope"></i></div>
+                            <div>
+                                <div class="ci-label">Email</div>
+                                <div class="ci-value">design@archstruct.com<br>careers@archstruct.com</div>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="ci-icon"><i class="ph-fill ph-clock"></i></div>
+                            <div>
+                                <div class="ci-label">Office Hours</div>
+                                <div class="ci-value">Monday – Friday: 9AM to 6PM EST<br>Weekends: By appointment only
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="margin-top:var(--s4);padding:1.5rem;background:var(--white);border-radius:var(--r-xl);border:1px solid var(--border);">
+                        <h4 style="margin-bottom:var(--s2);">International Offices</h4>
+                        <div style="display:flex;flex-direction:column;gap:1rem;">
+                            <div style="display:flex;align-items:center;gap:var(--s2);">
+                                <div
+                                    style="width:36px;height:36px;background:rgba(197,168,128,0.12);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;">
+                                    <i class="ph-fill ph-map-pin" style="color:var(--gold-dark);"></i></div>
+                                <div>
+                                    <div style="font-weight:600;font-size:0.9rem;">London, UK</div>
+                                    <div style="font-size:0.82rem;color:var(--text-muted);">12 Savile Row, Mayfair, W1S
+                                        3PQ</div>
+                                </div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:var(--s2);">
+                                <div
+                                    style="width:36px;height:36px;background:rgba(197,168,128,0.12);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;">
+                                    <i class="ph-fill ph-map-pin" style="color:var(--gold-dark);"></i></div>
+                                <div>
+                                    <div style="font-weight:600;font-size:0.9rem;">Dubai, UAE</div>
+                                    <div style="font-size:0.82rem;color:var(--text-muted);">Level 14, DIFC Gate, Sheikh
+                                        Zayed Rd</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div class="contact-form-card">
+                    <div class="section-label" style="margin-bottom:var(--s3);"><i
+                            class="ph-fill ph-paper-plane-right"></i> Project Inquiry</div>
+                    <h3 style="margin-bottom:var(--s4);">Tell Us About<br>Your Project</h3>
+                    <form action="#" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">First Name *</label>
+                                <input type="text" class="form-control" placeholder="John" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last Name *</label>
+                                <input type="text" class="form-control" placeholder="Doe" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" placeholder="john@company.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" placeholder="+1 (555) 000 0000">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Company / Organisation</label>
+                            <input type="text" class="form-control" placeholder="Your company name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Project Type *</label>
+                            <select class="form-control" required>
+                                <option value="">Select a project type</option>
+                                <option>Commercial Building</option>
+                                <option>Luxury Residential</option>
+                                <option>Mixed-Use Development</option>
+                                <option>Cultural / Civic Building</option>
+                                <option>Infrastructure</option>
+                                <option>3D Visualization Only</option>
+                                <option>Structural Consultation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Estimated Budget</label>
+                            <select class="form-control">
+                                <option value="">Select a budget range</option>
+                                <option>Under $500K</option>
+                                <option>$500K – $2M</option>
+                                <option>$2M – $10M</option>
+                                <option>$10M – $50M</option>
+                                <option>$50M+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tell Us About Your Project *</label>
+                            <textarea class="form-control" rows="5"
+                                placeholder="Describe your project vision, location, programme, and any specific requirements..."
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary"
+                            style="width:100%;padding:1rem;font-size:1rem;">Submit Enquiry <i
+                                class="ph-bold ph-paper-plane-right"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Map -->
+    <section style="background:var(--white);padding:var(--s6) 0;">
+        <div class="container">
+            <div class="section-header centered">
+                <div class="section-label"><i class="ph-fill ph-map-trifold"></i> Find Us</div>
+                <h2>Our Global Offices</h2>
+            </div>
+            <div class="map-placeholder">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80"
+                    alt="Office Location Map">
+                <div
+                    style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(26,43,76,0.85);backdrop-filter:blur(8px);padding:1rem 1.5rem;border-radius:var(--r-lg);border:1px solid rgba(197,168,128,0.3);text-align:center;">
+                    <div style="color:var(--gold);font-size:1.5rem;margin-bottom:0.3rem;"><i
+                            class="ph-fill ph-map-pin"></i></div>
+                    <div style="color:#ffffff;font-weight:700;font-size:0.9rem;">ArchStruct HQ</div>
+                    <div style="color:rgba(255,255,255,0.6);font-size:0.8rem;">100 Skyline Blvd, New York</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: FAQs -->
+    <section class="section" style="background:var(--off-white);">
+        <div class="container">
+            <div class="faq-grid">
+                <div>
+                    <div class="section-label"><i class="ph-fill ph-question"></i> FAQs</div>
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Can't find the answer you're looking for? Our team is happy to help — reach out directly and
+                        we'll respond within one business day.</p>
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80"
+                        alt="ArchStruct Team"
+                        style="width:100%;height:280px;object-fit:cover;border-radius:var(--r-xl);margin-top:var(--s4);">
+                </div>
+                <div class="faq-accordion-col">
+                    <details name="faq"
+                        style="background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.2rem 1.5rem;cursor:pointer;">
+                        <summary
+                            style="font-weight:700;color:var(--text-dark);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+                            How long does a typical architectural project take? <i class="ph-bold ph-plus"></i>
+                        </summary>
+                        <p style="margin-top:0.75rem;font-size:0.9rem;">Project timelines vary greatly depending on
+                            scale and complexity. A high-end residential home may take 12–18 months from concept to
+                            handover, while a large commercial tower can take 3–5 years. We always provide a detailed
+                            programme at the start of each engagement.</p>
+                    </details>
+                    <details name="faq"
+                        style="background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.2rem 1.5rem;cursor:pointer;">
+                        <summary
+                            style="font-weight:700;color:var(--text-dark);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+                            What is included in the Client Portal? <i class="ph-bold ph-plus"></i></summary>
+                        <p style="margin-top:0.75rem;font-size:0.9rem;">The client portal gives you access to all
+                            project documents and blueprints, a 3D model viewer, the live milestone schedule, an
+                            approval workflow engine, and a direct messaging channel to your project team — all in one
+                            secure, cloud-based dashboard.</p>
+                    </details>
+                    <details name="faq"
+                        style="background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.2rem 1.5rem;cursor:pointer;">
+                        <summary
+                            style="font-weight:700;color:var(--text-dark);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+                            Do you handle international projects? <i class="ph-bold ph-plus"></i></summary>
+                        <p style="margin-top:0.75rem;font-size:0.9rem;">Yes. We have active studios in New York, London,
+                            and Dubai, and we have delivered projects across 18 countries. Our team is experienced in
+                            navigating international building codes, planning systems, and contractor markets.</p>
+                    </details>
+                    <details name="faq"
+                        style="background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.2rem 1.5rem;cursor:pointer;">
+                        <summary
+                            style="font-weight:700;color:var(--text-dark);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+                            Can I commission 3D renderings without full architectural services? <i
+                                class="ph-bold ph-plus"></i></summary>
+                        <p style="margin-top:0.75rem;font-size:0.9rem;">Absolutely. Our visualisation studio accepts
+                            standalone commissions for CGI, virtual tours, and animation films. We can work from your
+                            existing drawings, BIM models, or concept sketches to produce photorealistic imagery to your
+                            brief.</p>
+                    </details>
+                    <details name="faq"
+                        style="background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.2rem 1.5rem;cursor:pointer;">
+                        <summary
+                            style="font-weight:700;color:var(--text-dark);list-style:none;display:flex;justify-content:space-between;align-items:center;">
+                            What is your approach to sustainable design? <i class="ph-bold ph-plus"></i></summary>
+                        <p style="margin-top:0.75rem;font-size:0.9rem;">Sustainability is integrated into every project
+                            from day one — not added as an afterthought. We target LEED, BREEAM, and WELL
+                            certifications, and our team includes dedicated green design specialists who advise on
+                            passive energy systems, biophilic design, and low-carbon materials.</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Process Strip -->
+    <section class="section" style="background:var(--white);">
+        <div class="container">
+            <div class="section-header centered">
+                <div class="section-label"><i class="ph-fill ph-flow-arrow"></i> What Happens Next</div>
+                <h2>Our Engagement Process</h2>
+                <p>From your first enquiry to project kick-off, here is what you can expect when working with
+                    ArchStruct.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="process-num">01</div>
+                    <h4>Initial Enquiry</h4>
+                    <p>Submit your project enquiry using the form above. We'll review it and assign the right senior
+                        architect to your project within 24 hours.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-num">02</div>
+                    <h4>Discovery Call</h4>
+                    <p>A 45-minute call with your assigned architect to discuss your vision, brief, site, budget, and
+                        timeline in detail.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-num">03</div>
+                    <h4>Proposal & Fee</h4>
+                    <p>We prepare a detailed scope of services, fee proposal, and indicative project programme tailored
+                        to your specific requirements.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-num">04</div>
+                    <h4>Project Kick-Off</h4>
+                    <p>Upon appointment, you're onboarded to our client portal and the design process begins — with your
+                        team fully activated and your project dashboard live.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: CTA -->
+    <section class="cta-band">
+        <div class="container">
+            <div class="cta-inner">
+                <div>
+                    <div class="section-label"
+                        style="background:rgba(197,168,128,0.1);border-color:rgba(197,168,128,0.25);color:var(--gold-light);">
+                        <i class="ph-fill ph-handshake"></i> Ready to Begin?</div>
+                    <h2>Your Dream Building<br>Starts With One Call.</h2>
+                    <p>Our team is standing by to discuss your project. Call us today or submit the form above — either
+                        way, we'll be back to you within one business day.</p>
+                </div>
+                <div class="cta-buttons">
+                    <a href="tel:+15551234567" class="btn btn-gold btn-lg"><i class="ph-fill ph-phone-call"></i> +1
+                        (555) 123-4567</a>
+                    <a href="mailto:design@archstruct.com" class="btn btn-ghost-white btn-lg"><i
+                            class="ph-fill ph-envelope"></i> Send an Email</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><a href="index.html" class="logo" style="margin-bottom:var(--s2);"><i
+                            class="ph-fill ph-buildings logo-icon" style="color:#ffffff;"></i>
+                        <div class="logo-text"><span class="logo-title" style="color:#ffffff;">ArchStruct</span><span
+                                class="logo-subtitle">Design Firm</span></div>
+                    </a>
+                    <p>Delivering visionary architecture, precision structural engineering, and immersive 3D design
+                        experiences globally.</p>
+                    <div class="social-links"><a href="#"><i class="ph-fill ph-linkedin-logo"></i></a><a href="#"><i
+                                class="ph-fill ph-instagram-logo"></i></a><a href="#"><i
+                                class="ph-fill ph-twitter-logo"></i></a></div>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html" class="active">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="services.html">Architectural Design</a></li>
+                        <li><a href="services.html">Structural Engineering</a></li>
+                        <li><a href="services.html">3D Visualization</a></li>
+                        <li><a href="services.html">Project Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact</h5>
+                    <ul class="footer-contact">
+                        <li><i class="ph-fill ph-map-pin"></i> 100 Skyline Blvd, Suite 400, NY</li>
+                        <li><i class="ph-fill ph-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="ph-fill ph-envelope"></i> design@archstruct.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ArchStruct Design Firm. All rights reserved.</p>
+                <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/mobile-nav.js"></script>
+<script>
+        // ── Home 2 Sidebar Logic ported to Home 1 ─────────────────────────────────────
+        (function () {
+            const sidebar = document.getElementById('h2NavSidebar');
+            const hamburger = document.querySelector('.mobile-menu-toggle');
+            const closeBtn = document.getElementById('h2CloseBtn');
+            const themeBtn = document.getElementById('h2ThemeToggle');
+            const themeIcon = document.getElementById('h2ThemeIcon');
+            const rtlBtn = document.getElementById('h2RtlToggle');
+
+            if (!sidebar || !hamburger) return; // safety check
+
+            // ── Overlay ─────────────────────────────────────────────────────
+            const overlay = document.createElement('div');
+            overlay.id = 'h2-nav-overlay';
+            document.querySelector('.header').appendChild(overlay);
+
+            function openSidebar() {
+                sidebar.classList.add('h2-open');
+                overlay.classList.add('h2-show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeSidebar() {
+                sidebar.classList.remove('h2-open');
+                overlay.classList.remove('h2-show');
+                document.body.style.overflow = '';
+            }
+
+            hamburger.addEventListener('click', openSidebar);
+            if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+            overlay.addEventListener('click', closeSidebar);
+
+            // ── Dropdown accordion ───────────────────────────────────────────
+            sidebar.querySelectorAll('.nav-dropdown > a').forEach(trigger => {
+                trigger.addEventListener('click', function (e) {
+                    const menu = this.nextElementSibling;
+                    if (!menu || !menu.classList.contains('dropdown-menu')) return;
+                    e.preventDefault();
+                    const parent = this.parentElement;
+                    const isOpen = parent.classList.contains('h2-dd-open');
+                    sidebar.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('h2-dd-open'));
+                    if (!isOpen) parent.classList.add('h2-dd-open');
+                });
+            });
+
+            // Close sidebar when a leaf link is clicked
+            sidebar.querySelectorAll('.dropdown-menu a, .h2-nav-body > a').forEach(a => {
+                a.addEventListener('click', closeSidebar);
+            });
+
+            // ── Dark Mode toggle (sidebar) ──────────────────────────────────
+            function syncThemeBtn() {
+                const dark = document.body.classList.contains('dark-mode');
+                if (themeIcon) themeIcon.className = dark ? 'ph-bold ph-sun' : 'ph-bold ph-moon';
+                if (themeBtn) {
+                    themeBtn.childNodes[1].textContent = dark ? ' Light Mode' : ' Dark Mode';
+                    themeBtn.classList.toggle('h2-active', dark);
+                }
+            }
+
+            if (themeBtn) {
+                syncThemeBtn();
+                themeBtn.addEventListener('click', () => {
+                    document.body.classList.toggle('dark-mode');
+                    const dark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('theme', dark ? 'dark' : 'light');
+                    syncThemeBtn();
+                });
+            }
+
+            // ── RTL toggle (sidebar) ────────────────────────────────────────
+            function syncRtlBtn() {
+                const rtl = document.documentElement.getAttribute('dir') === 'rtl';
+                if (rtlBtn) rtlBtn.classList.toggle('h2-active', rtl);
+            }
+
+            if (rtlBtn) {
+                syncRtlBtn();
+                rtlBtn.addEventListener('click', () => {
+                    const rtl = document.documentElement.getAttribute('dir') === 'rtl';
+                    document.documentElement.setAttribute('dir', rtl ? 'ltr' : 'rtl');
+                    localStorage.setItem('dir', rtl ? 'ltr' : 'rtl');
+                    syncRtlBtn();
+                });
+            }
+
+            // ── Init state from localStorage ────────────────────────────────
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                syncThemeBtn();
+            }
+            if (localStorage.getItem('dir') === 'rtl') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                syncRtlBtn();
+            }
+        })();
+    </script>
+</body>
+
+</html>

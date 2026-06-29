@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArchStruct | Immersive Experience</title>
+    <meta name="description"
+        content="Experience the future of architectural design with ArchStruct. We blend visionary aesthetics with rigorous engineering.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/luxury.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/dark-mode.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    <style>
+        /* Immersive Presentation / Slide Layout for Home 2 */
+        html,
+        body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #ffffff;
+            color: #1a1a1a;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background: #050505;
+            color: #ffffff;
+        }
+
+        .snap-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .snap-section {
+            height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            box-sizing: border-box;
+            overflow: hidden;
+            padding: 6rem 2rem 2rem 2rem;
+            background: #ffffff;
+            color: #1a1a1a;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode .snap-section {
+            background: #050505;
+            color: #ffffff;
+        }
+
+        .snap-section.bg-alt {
+            background: #f9f9f9;
+        }
+
+        body.dark-mode .snap-section.bg-alt {
+            background: #0a0a0a;
+        }
+
+        /* Header / Navbar Styling */
+        header.header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        body.dark-mode header.header {
+            background: rgba(5, 5, 5, 0.85) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        }
+
+
+        #theme-toggle,
+        #rtl-toggle {
+            color: #1a1a1a !important;
+        }
+
+        body.dark-mode #theme-toggle,
+        body.dark-mode #rtl-toggle {
+            color: #ffffff !important;
+        }
+
+        .header-actions .btn {
+            font-size: 1.1rem !important;
+        }
+
+        /* Large Typography Scale for Home 2 */
+        .snap-section h1 {
+            font-size: clamp(3.5rem, 8.5vh, 5.5rem) !important;
+            margin-bottom: 1.2rem !important;
+            line-height: 1.1 !important;
+            font-weight: 800;
+            color: #1a1a1a !important;
+        }
+
+        body.dark-mode .snap-section h1 {
+            color: #ffffff !important;
+        }
+
+        .snap-section h2 {
+            font-size: clamp(2.8rem, 7.5vh, 4.8rem) !important;
+            margin-bottom: 1.2rem !important;
+            line-height: 1.15 !important;
+            font-weight: 800;
+            color: #1a1a1a !important;
+        }
+
+        body.dark-mode .snap-section h2 {
+            color: #ffffff !important;
+        }
+
+        .snap-section p {
+            font-size: clamp(1.25rem, 3vh, 1.6rem) !important;
+            margin-bottom: 1.8rem !important;
+            max-width: 800px;
+            line-height: 1.65;
+            color: #444444 !important;
+        }
+
+        body.dark-mode .snap-section p {
+            color: #cccccc !important;
+        }
+
+        .snap-section .btn {
+            padding: 1.1rem 2.8rem !important;
+            font-size: 1.1rem !important;
+        }
+
+        /* Custom layout structures */
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .philosophy-images {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-height: 70vh;
+            position: relative;
+        }
+
+        .philosophy-images img {
+            border-radius: 4px;
+            object-fit: cover;
+        }
+
+        .main-img {
+            max-height: 30vh;
+            width: 100%;
+        }
+
+        .sub-img {
+            max-height: 20vh;
+            width: 80%;
+            margin-left: 20%;
+            margin-top: -8%;
+            border: 10px solid #ffffff;
+            transition: border-color 0.3s;
+        }
+
+        body.dark-mode .sub-img {
+            border: 10px solid #0a0a0a;
+        }
+
+        /* Stats adjustments */
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .stat-value {
+            font-size: clamp(3.5rem, 8vh, 5.5rem) !important;
+            font-weight: 800;
+            color: var(--navy);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.1rem !important;
+            color: #444444;
+            margin-top: 0.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        body.dark-mode .stat-label {
+            color: #cccccc;
+        }
+
+        /* Testimonial quote override */
+        .snap-section h2.testimonial-quote {
+            font-size: clamp(1.4rem, 5vw, 2.5rem) !important;
+            font-weight: 300 !important;
+            max-width: 950px;
+            margin: 0 auto;
+            line-height: 1.5 !important;
+            color: #1a1a1a !important;
+        }
+
+        body.dark-mode .snap-section h2.testimonial-quote {
+            color: #ffffff !important;
+        }
+
+        /* Services grid and premium glassmorphic cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .service-card {
+            padding: 3rem 2.5rem !important;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(128, 128, 128, 0.15);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 400px;
+            cursor: pointer;
+        }
+
+        body.dark-mode .service-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--navy);
+            transition: height 0.4s ease;
+            z-index: 0;
+        }
+
+        .service-card.sc-blue::before {
+            background: #60A5FA;
+        }
+
+        .service-card.sc-green::before {
+            background: #10B981;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: rgba(197, 168, 128, 0.35);
+        }
+
+        body.dark-mode .service-card:hover {
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .service-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            background: rgba(197, 168, 128, 0.1);
+            color: var(--navy);
+            transition: all 0.4s ease;
+        }
+
+        .service-card.sc-blue .service-icon-wrapper {
+            background: rgba(96, 165, 250, 0.1);
+            color: #60A5FA;
+        }
+
+        .service-card.sc-green .service-icon-wrapper {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10B981;
+        }
+
+        .service-card:hover .service-icon-wrapper {
+            transform: scale(1.08);
+        }
+
+        .service-card h3 {
+            font-size: 2rem !important;
+            font-weight: 700 !important;
+            color: #1a1a1a !important;
+            margin-bottom: 1rem !important;
+        }
+
+        body.dark-mode .service-card h3 {
+            color: #ffffff !important;
+        }
+
+        .service-card p {
+            font-size: 1.15rem !important;
+            color: #666666 !important;
+            line-height: 1.6 !important;
+            margin-bottom: 2rem !important;
+        }
+
+        body.dark-mode .service-card p {
+            color: #888888 !important;
+        }
+
+        .service-card a {
+            font-size: 1.15rem !important;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .service-card a:hover {
+            gap: 0.8rem;
+        }
+
+        /* Footer styling overrides */
+        .site-footer {
+            background: #f5f5f5 !important;
+            color: #1a1a1a !important;
+        }
+
+        body.dark-mode .site-footer {
+            background: #000000 !important;
+            color: #ffffff !important;
+        }
+
+        .site-footer h5 {
+            color: #1a1a1a !important;
+        }
+
+        body.dark-mode .site-footer h5 {
+            color: #ffffff !important;
+        }
+
+        .site-footer a,
+        .site-footer p,
+        .site-footer ul li {
+            color: #555555 !important;
+        }
+
+        body.dark-mode .site-footer a,
+        body.dark-mode .site-footer p,
+        body.dark-mode .site-footer ul li {
+            color: #888888 !important;
+        }
+
+        .site-footer ul li a:hover {
+            color: var(--navy) !important;
+        }
+
+        /* Adjust for scrollbar and styling */
+        .snap-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .snap-container::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        body.dark-mode .snap-container::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        .snap-container::-webkit-scrollbar-thumb {
+            background: var(--navy);
+            border-radius: 3px;
+        }
+
+        /* Moving Effects Animations for Hero interactive card */
+        @keyframes floatCard {
+            0% {
+                transform: translateY(0px) rotate(0.5deg);
+            }
+
+            50% {
+                transform: translateY(-12px) rotate(-0.5deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(0.5deg);
+            }
+        }
+
+        @keyframes floatCard2 {
+            0% {
+                transform: translateY(0px) rotate(-0.5deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(0.5deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(-0.5deg);
+            }
+        }
+
+        @keyframes pulseLight {
+            0% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes spinCube {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes barFill {
+            0% {
+                width: 45%;
+            }
+
+            100% {
+                width: 92%;
+            }
+        }
+
+        /* Mobile fixes for full height split grid */
+        @media (max-width: 991px) {
+            html, body {
+                overflow: visible auto !important;
+                height: auto !important;
+            }
+            .snap-container {
+                height: auto !important;
+                overflow: visible !important;
+                scroll-snap-type: none !important;
+            }
+            .snap-section {
+                height: auto !important;
+                min-height: 100vh;
+                overflow: visible !important;
+                padding-top: 140px !important;
+                padding-bottom: 60px !important;
+            }
+            .split-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                margin-top: 0;
+            }
+
+            .split-grid > div:first-child {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .split-grid > div:first-child > div {
+                justify-content: center !important;
+            }
+
+            .snap-section h2 {
+                font-size: clamp(2rem, 6vw, 2.5rem) !important;
+            }
+
+            .snap-section p {
+                font-size: 1rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .split-grid h1 {
+                font-size: clamp(2rem, 7vw, 2.8rem) !important;
+                line-height: 1.1;
+            }
+
+            .hero-interactive-side {
+                display: flex !important;
+                flex-wrap: wrap;
+                gap: 1rem !important;
+                justify-content: center !important;
+                transform: scale(0.9);
+                transform-origin: top center;
+                margin-top: 1rem;
+            }
+
+            .hero-interactive-side > div {
+                width: 100% !important;
+                max-width: 320px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 2rem 1.5rem !important;
+                min-height: 300px;
+                box-sizing: border-box;
+            }
+
+            .philosophy-images {
+                display: none;
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════
+           DESKTOP RESTORE (> 1024px)
+           Hide every mobile-only wrapper so the desktop nav
+           is pixel-perfect identical to the original.
+        ═══════════════════════════════════════════════════ */
+        @media (min-width: 1024px) {
+
+            /* Make h2-nav-body invisible to the flex layout —
+               its children (the <a> tags) become direct flex
+               children of nav.nav-links, exactly as before.  */
+            .h2-nav-body {
+                display: contents;
+            }
+
+            /* Hide every mobile-only element */
+            .h2-sidebar-head,
+            .h2-sidebar-foot,
+            .h2-close-btn,
+            #h2-nav-overlay {
+                display: none !important;
+            }
+        }
+
+        /* ═══════════════════════════════════════════════════
+           HOME 2 — PREMIUM MOBILE / TABLET NAV (≤ 1024px)
+           Desktop (> 1024px) is 100% untouched.
+        ═══════════════════════════════════════════════════ */
+        @media (max-width: 1023px) {
+
+            html, body {
+                overflow-x: hidden !important;
+                width: 100%;
+            }
+            
+            nav.nav-links {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 350px;
+                background: #FDFBF7 !important;
+                border-right: 4px solid var(--gold) !important;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+                display: flex;
+                flex-direction: column;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 10000;
+            }
+
+            body.dark-mode nav.nav-links {
+                background: #111111 !important;
+            }
+
+            nav.nav-links.h2-open {
+                transform: translateX(0) !important;
+                visibility: visible !important;
+                transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0s !important;
+            }
+
+            /* ── Sidebar header (logo + close btn) ── */
+            .h2-sidebar-head {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1.5rem;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                background: transparent !important;
+            }
+
+            body.dark-mode .h2-sidebar-head {
+                background: #111111;
+                border-bottom-color: rgba(255, 255, 255, 0.07);
+            }
+
+            .h2-sidebar-head .logo {
+                display: flex !important;
+                align-items: center;
+                gap: 0.5rem;
+                text-decoration: none;
+            }
+
+            .h2-sidebar-head .logo-title {
+                font-size: 1.1rem !important;
+                font-weight: 800;
+                color: #1a1a1a !important;
+            }
+
+            body.dark-mode .h2-sidebar-head .logo-title {
+                color: #ffffff !important;
+            }
+
+            .h2-sidebar-head .logo .logo-icon {
+                font-size: 1.8rem !important;
+                color: var(--navy) !important;
+            }
+
+            /* Hide original mobile-menu-header — we use h2-sidebar-head */
+            .mobile-menu-header {
+                display: none !important;
+            }
+
+            /* ── Close button ── */
+            .h2-close-btn {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: rgba(0, 0, 0, 0.06);
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                color: #1a1a1a;
+                font-size: 1.2rem;
+                transition: background 0.2s, transform 0.2s;
+                flex-shrink: 0;
+            }
+
+            body.dark-mode .h2-close-btn {
+                background: rgba(255, 255, 255, 0.1);
+                color: #ffffff;
+            }
+
+            .h2-close-btn:hover {
+                background: rgba(197, 168, 128, 0.15);
+                color: var(--navy);
+                transform: rotate(90deg);
+            }
+
+            /* ── Scrollable nav body ── */
+            .h2-nav-body {
+                flex: 1;
+                overflow-y: auto;
+                padding: 0.75rem 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .h2-nav-body::-webkit-scrollbar {
+                width: 4px;
+            }
+
+            .h2-nav-body::-webkit-scrollbar-thumb {
+                background: var(--navy);
+                border-radius: 2px;
+            }
+
+            /* ── Nav links inside sidebar ── */
+            nav.nav-links a {
+                display: flex !important;
+                align-items: center !important;
+                gap: 0.75rem !important;
+                padding: 0.9rem 1.5rem !important;
+                font-size: 0.95rem !important;
+                font-weight: 600 !important;
+                color: #333333 !important;
+                border-radius: 0 !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+                transition: background 0.18s, color 0.18s, padding-left 0.18s !important;
+                width: 100% !important;
+                background: transparent !important;
+            }
+
+            body.dark-mode nav.nav-links a {
+                color: #cccccc !important;
+                border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+            }
+
+            nav.nav-links a:hover {
+                background: rgba(197, 168, 128, 0.08) !important;
+                color: var(--navy) !important;
+                padding-left: 2rem !important;
+            }
+
+            nav.nav-links a.active {
+                color: #ffffff !important;
+                background: var(--navy) !important;
+                border-left: none !important;
+                padding-left: 1.5rem !important;
+            }
+
+            /* Icons visible on mobile */
+            .mobile-nav-icon {
+                display: inline-block !important;
+                font-size: 1.1rem;
+                color: var(--gold) !important;
+                flex-shrink: 0;
+            }
+
+            /* ── Dropdown accordion ── */
+            .nav-dropdown {
+                width: 100% !important;
+                position: static !important;
+            }
+
+            .nav-dropdown>a {
+                position: relative !important;
+            }
+
+            .nav-dropdown>a .ph-caret-down {
+                margin-left: auto !important;
+                flex-shrink: 0;
+                transition: transform 0.3s ease;
+                opacity: 0.8;
+                color: var(--gold) !important;
+            }
+
+            .nav-dropdown.h2-dd-open>a .ph-caret-down {
+                transform: rotate(180deg);
+                opacity: 1;
+                color: var(--navy);
+            }
+
+            .dropdown-menu {
+                position: static !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                box-shadow: none !important;
+                background: #F1F5F9 !important;
+                border: none !important;
+                padding: 0 !important;
+                min-width: unset !important;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.32s ease;
+                border-radius: 0 !important;
+            }
+
+            body.dark-mode .dropdown-menu {
+                background: rgba(255, 255, 255, 0.03) !important;
+            }
+
+            .nav-dropdown.h2-dd-open .dropdown-menu {
+                max-height: 300px;
+            }
+
+            .dropdown-menu a {
+                padding: 0.9rem 1.5rem 0.9rem 3.5rem !important;
+                font-size: 0.95rem !important;
+                font-weight: 700 !important;
+                color: var(--text-mid) !important;
+                background: transparent !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
+                border-radius: 0 !important;
+                display: flex !important;
+                gap: 0.75rem !important;
+            }
+
+            body.dark-mode .dropdown-menu a {
+                color: #999999 !important;
+                border-bottom-color: rgba(255, 255, 255, 0.04) !important;
+            }
+
+            .dropdown-menu a:hover {
+                background: rgba(197, 168, 128, 0.1) !important;
+                color: var(--navy) !important;
+                padding-left: 3.5rem !important;
+            }
+
+            /* ── Sidebar footer (login + toggles) ── */
+            .h2-sidebar-foot {
+                flex-shrink: 0;
+                padding: 1rem 1.5rem 1.5rem;
+                border-top: 1px solid rgba(0, 0, 0, 0.08);
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                background: transparent !important;
+            }
+
+            body.dark-mode .h2-sidebar-foot {
+                background: #111111;
+                border-top-color: rgba(255, 255, 255, 0.07);
+            }
+
+            .h2-sidebar-foot .btn {
+                width: 100% !important;
+                justify-content: center !important;
+                font-size: 0.95rem !important;
+                padding: 0.8rem 1.5rem !important;
+            }
+
+            /* ── Toggle row (dark + RTL) inside sidebar ── */
+            .h2-toggle-row {
+                display: flex;
+                gap: 0.75rem;
+                width: 100%;
+            }
+
+            .h2-toggle-btn {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                padding: 0.65rem 0.75rem;
+                border-radius: 10px;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                background: rgba(0, 0, 0, 0.03);
+                color: #444444;
+                font-size: 0.82rem;
+                font-weight: 700;
+                cursor: pointer;
+                transition: all 0.2s;
+                font-family: inherit;
+            }
+
+            body.dark-mode .h2-toggle-btn {
+                border-color: rgba(255, 255, 255, 0.1);
+                background: rgba(255, 255, 255, 0.05);
+                color: #aaaaaa;
+            }
+
+            .h2-toggle-btn:hover,
+            .h2-toggle-btn.h2-active {
+                background: rgba(197, 168, 128, 0.15);
+                border-color: var(--navy);
+                color: var(--navy);
+            }
+
+            /* ── Hamburger toggle button ── */
+            .mobile-menu-toggle,
+            .mobile-menu-toggle:focus,
+            .mobile-menu-toggle:hover,
+            .mobile-menu-toggle:active {
+                display: flex !important;
+                background: transparent !important;
+                border: none !important;
+                color: var(--navy) !important;
+                outline: none !important;
+                box-shadow: none !important;
+                -webkit-appearance: none !important;
+                appearance: none !important;
+            }
+            
+            body.dark-mode .mobile-menu-toggle,
+            body.dark-mode .mobile-menu-toggle:focus,
+            body.dark-mode .mobile-menu-toggle:hover,
+            body.dark-mode .mobile-menu-toggle:active {
+                color: #ffffff !important;
+            }
+
+            /* ── Header actions hidden on mobile ── */
+            .header-actions {
+                display: none !important;
+            }
+
+            /* ── Hide the mobile-login-container (we replaced it) ── */
+            .mobile-login-container {
+                display: none !important;
+            }
+
+            /* ── Overlay backdrop ── */
+            #h2-nav-overlay {
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.55);
+                z-index: 9999;
+                display: none;
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+
+            #h2-nav-overlay.h2-show {
+                display: block;
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="home-page">
+
+    <!-- ═══════ HEADER ════════════════════════════════════════════ -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <i class="ph-fill ph-buildings logo-icon"></i>
+                <div class="logo-text">
+                    <span class="logo-title">ArchStruct</span>
+                    <span class="logo-subtitle">Design Firm</span>
+                </div>
+            </a>
+            <nav class="nav-links" id="h2NavSidebar">
+
+                <!-- Sidebar Header: Logo + Close -->
+                <div class="h2-sidebar-head">
+                    <a href="index.html" class="logo">
+                        <i class="ph-fill ph-buildings logo-icon"></i>
+                        <div class="logo-text">
+                            <span class="logo-title">ArchStruct</span>
+                            <span class="logo-subtitle">Design Firm</span>
+                        </div>
+                    </a>
+                    <button class="h2-close-btn" id="h2CloseBtn" aria-label="Close menu">
+                        <i class="ph-bold ph-x"></i>
+                    </button>
+                </div>
+
+                <!-- Scrollable Nav Links -->
+                <div class="h2-nav-body">
+                    <div class="nav-dropdown">
+                        <a href="home2.html" class="active">
+                            <i class="ph-bold ph-house mobile-nav-icon"></i>
+                            Home
+                            <i class="ph-bold ph-caret-down" style="font-size:0.8em;"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="index.html"><i class="ph-bold ph-house"
+                                    style="font-size:0.85em; color:var(--gold);"></i> Home 1 (Aurora)</a>
+                            <a href="home2.html"><i class="ph-bold ph-sparkle"
+                                    style="font-size:0.85em; color:var(--gold);"></i> Home 2 (Immersive)</a>
+                        </div>
+                    </div>
+                    <a href="about.html"><i class="ph-bold ph-info mobile-nav-icon"></i> About</a>
+                    <a href="services.html"><i class="ph-bold ph-compass mobile-nav-icon"></i> Services</a>
+                    <a href="portfolio.html"><i class="ph-bold ph-image mobile-nav-icon"></i> Portfolio</a>
+                    <a href="interactive-3d.html"><i class="ph-bold ph-cube mobile-nav-icon"></i> 3D Viewer</a>
+                    <a href="contact.html"><i class="ph-bold ph-phone mobile-nav-icon"></i> Contact</a>
+                    <div class="nav-dropdown">
+                        <a href="#">
+                            <i class="ph-bold ph-layout mobile-nav-icon"></i>
+                            Dashboards
+                            <i class="ph-bold ph-caret-down" style="font-size:0.8em;"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="client-dashboard.html"><i class="ph-bold ph-user"
+                                    style="font-size:0.85em; color:var(--navy);"></i> Client Dashboard</a>
+                            <a href="admin-dashboard.html"><i class="ph-bold ph-shield"
+                                    style="font-size:0.85em; color:var(--navy);"></i> Admin Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Footer: Login + Toggles -->
+                <div class="h2-sidebar-foot">
+                    <div class="h2-toggle-row">
+                        <button class="h2-toggle-btn" id="h2ThemeToggle" aria-label="Toggle Dark Mode">
+                            <i class="ph-bold ph-moon" id="h2ThemeIcon"></i> Dark Mode
+                        </button>
+                        <button class="h2-toggle-btn" id="h2RtlToggle" aria-label="Toggle RTL">
+                            <i class="ph-bold ph-text-align-right"></i> RTL
+                        </button>
+                    </div>
+                    <a href="login.html" class="btn btn-primary">Login <i class="ph-bold ph-sign-in"></i></a>
+                </div>
+
+            </nav>
+            <div class="header-actions">
+                <div class="toggle-group">
+                    <button id="theme-toggle" class="toggle-btn" aria-label="Toggle Dark Mode"
+                        style="background:none; border:none; cursor:pointer;"><i class="ph-bold ph-moon"></i></button>
+                    <div class="toggle-divider" style="background:rgba(128,128,128,0.15);"></div>
+                    <button id="rtl-toggle" class="toggle-btn toggle-rtl" aria-label="Toggle RTL"
+                        style="background:none; border:none; cursor:pointer;">RTL</button>
+                </div>
+                <a href="login.html" class="btn btn-primary">Login <i class="ph-bold ph-sign-in"></i></a>
+            </div>
+            <button class="mobile-menu-toggle"><i class="ph-bold ph-list"></i></button>
+        </div>
+    </header>
+
+    <div class="snap-container">
+
+        <!-- SECTION 1: Cinematic Hero -->
+        <section class="snap-section" style="padding: 0;">
+            <div style="position:absolute; inset:0; z-index:0;">
+                <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=2000&q=80"
+                    style="width:100%; height:100%; object-fit:cover;" alt="Modern Architecture">
+                <div
+                    style="position:absolute; inset:0; background:linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%); z-index: 1;">
+                </div>
+            </div>
+            <div class="container"
+                style="position:relative; z-index:2; max-width:1400px; width: 100%; padding: 0 2rem;">
+                <div class="split-grid">
+                    <div>
+                        <div
+                            style="color:#ffffff; font-size:0.95rem; font-weight:700; letter-spacing:4px; text-transform:uppercase; margin-bottom:1.2rem; display:flex; align-items:center; gap:1rem;">
+                            <span style="width:30px; height:2px; background:#ffffff;"></span> Redefining Horizons
+                        </div>
+                        <h1 style="color:#ffffff !important; letter-spacing:-1px;">
+                            Design Beyond<br><span style="color:#ffffff;">Imagination.</span>
+                        </h1>
+                        <p style="color:#cccccc !important;">
+                            We merge avant-garde architectural aesthetics with uncompromising structural integrity to
+                            create landmarks that define tomorrow.
+                        </p>
+                        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                            <a href="portfolio.html" class="btn btn-primary">Explore Our Work</a>
+                            <a href="about.html" class="btn"
+                                style="color:#ffffff; border:1px solid rgba(255,255,255,0.2);">The Firm</a>
+                        </div>
+                    </div>
+
+                    <!-- Hero Interactive Moving Effect Block on the right side -->
+                    <div class="hero-interactive-side"
+                        style="display: flex; gap: 2rem; align-items: center; justify-content: center; z-index: 2; width: 100%;">
+                        <!-- Glassmorphic floating card 1 -->
+                        <div class="floating-blueprint"
+                            style="padding: 1.8rem; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; width: 270px; height: 260px; display: flex; flex-direction: column; justify-content: space-between; text-align: left; box-shadow: 0 30px 60px rgba(0,0,0,0.4); animation: floatCard 6s ease-in-out infinite;">
+                            <div>
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+                                    <span
+                                        style="color: #ffffff; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">Real-Time
+                                        Render</span>
+                                    <span
+                                        style="display: inline-block; width: 8px; height: 8px; background: #10B981; border-radius: 50%; animation: pulseLight 2s infinite;"></span>
+                                </div>
+                                <h4
+                                    style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem; font-family: 'Outfit', sans-serif;">
+                                    Project: Aurora Villa</h4>
+                                <p
+                                    style="font-size: 0.8rem !important; color: #eee; margin-bottom: 0 !important; line-height: 1.3;">
+                                    Active WebGL session rendering luxury residential complex.</p>
+                            </div>
+                            <div
+                                style="background: rgba(255,255,255,0.08); padding: 0.8rem 1rem; border-radius: 8px; display: flex; align-items: center; gap: 0.8rem;">
+                                <i class="ph-fill ph-cube"
+                                    style="font-size: 1.8rem; color: #ffffff; animation: spinCube 12s linear infinite;"></i>
+                                <div>
+                                    <div style="font-size: 0.7rem; color: #ddd;">Render Engine</div>
+                                    <div style="font-size: 0.8rem; color: #fff; font-weight: 600;">v3.0 (Active)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Glassmorphic floating card 2 -->
+                        <div class="floating-blueprint-2"
+                            style="padding: 1.8rem; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; width: 270px; height: 260px; display: flex; flex-direction: column; justify-content: space-between; text-align: left; box-shadow: 0 30px 60px rgba(0,0,0,0.4); animation: floatCard2 6s ease-in-out infinite; animation-delay: 1.2s;">
+                            <div>
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+                                    <span
+                                        style="color: #60A5FA; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">Design
+                                        Specs</span>
+                                    <span style="font-size: 0.8rem; color: #10B981; font-weight: 600;">96% Green</span>
+                                </div>
+                                <h4
+                                    style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem; font-family: 'Outfit', sans-serif;">
+                                    Eco-Materiality</h4>
+                                <p
+                                    style="font-size: 0.8rem !important; color: #eee; margin-bottom: 0 !important; line-height: 1.3;">
+                                    Utilizing low-carbon concrete, recycled steel, and solar facades.</p>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.08); padding: 0.8rem 1rem; border-radius: 8px;">
+                                <div
+                                    style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #ddd; margin-bottom: 0.3rem;">
+                                    <span>Solar Efficiency</span>
+                                    <span style="color: #60A5FA;">A+ Class</span>
+                                </div>
+                                <div
+                                    style="height: 4px; background: rgba(255,255,255,0.15); border-radius: 2px; margin-bottom: 0.3rem; overflow: hidden;">
+                                    <div
+                                        style="width: 90%; height: 100%; background: #60A5FA; animation: barFill 3s ease-in-out infinite alternate;">
+                                    </div>
+                                </div>
+                                <div style="font-size: 0.75rem; color: #fff; font-weight: 600;">420 kWh / sqm</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Firm Philosophy -->
+        <section class="snap-section bg-alt">
+            <div class="container">
+                <div class="split-grid">
+                    <div class="philosophy-images">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80"
+                            class="main-img" alt="Studio">
+                        <img src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=600&q=80"
+                            class="sub-img" alt="Details">
+                    </div>
+                    <div>
+                        <h2>The Architecture<br>of <span style="font-style:italic; font-weight:300;">Elegance</span>.
+                        </h2>
+                        <p>
+                            At ArchStruct, we don't just build structures; we sculpt environments. Every line drawn is a
+                            commitment to sustainability, functionality, and breathtaking visual harmony.
+                        </p>
+                        <p style="margin-bottom: 2rem !important;">
+                            Our philosophy is rooted in the belief that space shapes human experience. By integrating
+                            cutting-edge computational design with master craftsmanship, we deliver spaces that inspire.
+                        </p>
+                        <a href="about.html"
+                            style="color:var(--navy); font-size:1.15rem; font-weight:600; display:flex; align-items:center; gap:0.5rem; text-decoration:none;">Discover
+                            Our Story <i class="ph-bold ph-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: The Masterpiece -->
+        <section class="snap-section">
+            <div style="position:absolute; inset:0; z-index:0;">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2000&q=80"
+                    style="width:100%; height:100%; object-fit:cover; opacity:0.35;" alt="Masterpiece Project">
+                <div
+                    style="position:absolute; inset:0; background:radial-gradient(circle at center, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 100%); z-index:1; transition: background 0.3s;">
+                </div>
+                <div class="dark-gradient-overlay"
+                    style="position:absolute; inset:0; background:radial-gradient(circle at center, rgba(5,5,5,0) 0%, rgba(5,5,5,0.95) 100%); z-index:1; opacity:0; transition: opacity 0.3s;">
+                </div>
+            </div>
+            <script>
+                // React background overlay to dark mode
+                const updateOverlay = () => {
+                    const isDark = document.body.classList.contains('dark-mode');
+                    const overlay = document.querySelector('.dark-gradient-overlay');
+                    if (overlay) overlay.style.opacity = isDark ? '1' : '0';
+                };
+                if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', updateOverlay);
+                else updateOverlay();
+                // Listen to toggle events
+                document.getElementById('theme-toggle')?.addEventListener('click', () => setTimeout(updateOverlay, 50));
+            </script>
+            <div class="container" style="position:relative; z-index:2; text-align:center;">
+                <span
+                    style="color:var(--navy); font-size:0.95rem; font-weight:700; letter-spacing:3px; text-transform:uppercase;">Featured
+                    Project</span>
+                <h2>The Glass Pavilion.</h2>
+                <p style="margin:0 auto 2.5rem auto;">
+                    An award-winning cantilevered residence suspended over a sheer cliff face. 14,000 square feet of
+                    seamless indoor-outdoor integration.
+                </p>
+                <a href="interactive-3d.html" class="btn btn-primary"><i class="ph-bold ph-cube"></i> View 3D Model</a>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Expertise Grid -->
+        <section class="snap-section">
+            <div class="container">
+                <div style="text-align:center; margin-bottom:3rem;">
+                    <h2>Our <span style="color:var(--navy);">Expertise</span>.</h2>
+                </div>
+                <div class="services-grid">
+                    <!-- Service 1 -->
+                    <div class="service-card sc-primary">
+                        <div>
+                            <div class="service-icon-wrapper">
+                                <i class="ph-fill ph-compass-tool" style="font-size:2.5rem;"></i>
+                            </div>
+                            <h3>Architecture</h3>
+                            <p>Visionary conceptualization and meticulous detailing for residential, commercial, and
+                                cultural institutions.</p>
+                        </div>
+                        <a href="services.html" style="color:var(--navy);">Learn More <i
+                                class="ph-bold ph-arrow-right"></i></a>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="service-card sc-blue">
+                        <div>
+                            <div class="service-icon-wrapper">
+                                <i class="ph-fill ph-intersect" style="font-size:2.5rem;"></i>
+                            </div>
+                            <h3>Structural Eng</h3>
+                            <p>Advanced structural analysis ensuring that our most ambitious architectural forms stand
+                                the test of time.</p>
+                        </div>
+                        <a href="services.html" style="color:#60A5FA;">Learn More <i
+                                class="ph-bold ph-arrow-right"></i></a>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="service-card sc-green">
+                        <div>
+                            <div class="service-icon-wrapper">
+                                <i class="ph-fill ph-couch" style="font-size:2.5rem;"></i>
+                            </div>
+                            <h3>Interior Design</h3>
+                            <p>Curated spatial experiences focusing on materiality, light, acoustics, and bespoke
+                                furnishings.</p>
+                        </div>
+                        <a href="services.html" style="color:#10B981;">Learn More <i
+                                class="ph-bold ph-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: 3D Teaser -->
+        <section class="snap-section bg-alt"
+            style="border-top:1px solid rgba(128,128,128,0.1); border-bottom:1px solid rgba(128,128,128,0.1);">
+            <div class="container">
+                <div class="split-grid">
+                    <div>
+                        <h2>Immersive<br>Visualization.</h2>
+                        <p>
+                            Step inside your project before the foundation is even poured. Our proprietary 3D engine
+                            allows clients to rotate, zoom, and inspect their future assets with photorealistic
+                            fidelity.
+                        </p>
+                        <a href="interactive-3d.html" class="btn btn-primary"
+                            style="background:var(--navy); border-color:var(--navy); color:#fff;">Launch Viewer <i
+                                class="ph-bold ph-arrow-right"></i></a>
+                    </div>
+                    <div
+                        style="height:350px; border-radius:var(--r-xl); overflow:hidden; border:1px solid rgba(128,128,128,0.15); position:relative; background:#000;">
+                        <model-viewer
+                            src="https://raw.githubusercontent.com/mrdoob/three.js/master/examples/models/gltf/LittlestTokyo.glb"
+                            camera-controls auto-rotate shadow-intensity="1" alt="Tokyo District 3D Model"
+                            style="width: 100%; height: 100%; outline: none;" background-color="#000000">
+                        </model-viewer>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: Global Impact (Stats) -->
+        <section class="snap-section"
+            style="background:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80') center/cover fixed; position:relative;">
+            <div style="position:absolute; inset:0; background:rgba(255,255,255,0.85); z-index:1; transition: background 0.3s;"
+                class="stats-overlay"></div>
+            <script>
+                const updateStatsOverlay = () => {
+                    const isDark = document.body.classList.contains('dark-mode');
+                    const overlay = document.querySelector('.stats-overlay');
+                    if (overlay) overlay.style.background = isDark ? 'rgba(5,5,5,0.85)' : 'rgba(255,255,255,0.88)';
+                };
+                if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', updateStatsOverlay);
+                else updateStatsOverlay();
+                document.getElementById('theme-toggle')?.addEventListener('click', () => setTimeout(updateStatsOverlay, 50));
+            </script>
+            <div class="container" style="position:relative; z-index:2; width: 100%;">
+                <div class="stats-grid">
+                    <div>
+                        <div class="stat-value">120+</div>
+                        <div class="stat-label">Projects Built</div>
+                    </div>
+                    <div>
+                        <div class="stat-value">45</div>
+                        <div class="stat-label">Global Awards</div>
+                    </div>
+                    <div>
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div>
+                        <div class="stat-value">$2B</div>
+                        <div class="stat-label">Portfolio Value</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: Client Voices -->
+        <section class="snap-section">
+            <div class="container" style="text-align:center;">
+                <i class="ph-fill ph-quotes"
+                    style="font-size:3.5rem; color:rgba(197,168,128,0.2); margin-bottom:2rem; display:block;"></i>
+                <h2 class="testimonial-quote">
+                    "ArchStruct didn't just design our corporate headquarters; they engineered a cultural shift. The
+                    spatial flow and bold geometries have redefined how our teams collaborate."
+                </h2>
+                <div style="margin-top:2.5rem;">
+                    <div
+                        style="font-weight:700; font-size:1.1rem; color:var(--navy); text-transform:uppercase; letter-spacing:1px;">
+                        Elena Rostova</div>
+                    <div style="color:#777777; font-size:0.95rem; margin-top:0.3rem;">CEO, Nova Corp</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: Massive CTA -->
+        <section class="snap-section bg-alt" style="border-top:1px solid rgba(128,128,128,0.1); text-align:center;">
+            <div class="container">
+                <h2>Ready to build<br>the extraordinary?</h2>
+                <p style="margin:0 auto 2.5rem auto;">
+                    Connect with our lead architects to discuss your vision, explore our client portal, or schedule a
+                    virtual consultation.
+                </p>
+                <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+                    <a href="contact.html" class="btn btn-primary">Start a Project</a>
+                    <a href="login.html" class="btn"
+                        style="border:1px solid rgba(128,128,128,0.3); text-decoration:none;">Client Login</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER (Full Home 1 Footer adapted for Home 2 presentation mode) -->
+        <footer class="site-footer snap-section"
+            style="padding: 4rem 2rem 2rem 2rem; justify-content: center; height: auto; min-height: 100vh; scroll-snap-align: start; border-top: 1px solid rgba(128,128,128,0.15);">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <a href="index.html" class="logo" style="margin-bottom:var(--s2); text-decoration:none;">
+                            <i class="ph-fill ph-buildings logo-icon"></i>
+                            <div class="logo-text"><span class="logo-title">ArchStruct</span><span
+                                    class="logo-subtitle">Design Firm</span></div>
+                        </a>
+                        <p
+                            style="font-size:0.95rem !important; max-width: 320px; line-height: 1.5; margin-bottom: 1.5rem;">
+                            Delivering visionary architecture, precision structural engineering, and immersive 3D design
+                            experiences — globally.</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="ph-fill ph-twitter-logo"></i></a>
+                            <a href="#" aria-label="Behance"><i class="ph-fill ph-behance-logo"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h5 style="font-size:1.15rem; margin-bottom:1.2rem; font-weight:700;">Company</h5>
+                        <ul style="list-style:none; padding:0; line-height:2.2;">
+                            <li><a href="about.html" style="text-decoration:none; font-size:0.95rem;">About Us</a></li>
+                            <li><a href="services.html" style="text-decoration:none; font-size:0.95rem;">Services</a>
+                            </li>
+                            <li><a href="portfolio.html" style="text-decoration:none; font-size:0.95rem;">Portfolio</a>
+                            </li>
+                            <li><a href="contact.html" style="text-decoration:none; font-size:0.95rem;">Contact</a></li>
+                            <li><a href="coming-soon.html" style="text-decoration:none; font-size:0.95rem;">Careers</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5 style="font-size:1.15rem; margin-bottom:1.2rem; font-weight:700;">Services</h5>
+                        <ul style="list-style:none; padding:0; line-height:2.2;">
+                            <li><a href="services.html" style="text-decoration:none; font-size:0.95rem;">Architectural
+                                    Design</a></li>
+                            <li><a href="services.html" style="text-decoration:none; font-size:0.95rem;">Structural
+                                    Engineering</a></li>
+                            <li><a href="services.html" style="text-decoration:none; font-size:0.95rem;">3D
+                                    Visualization</a></li>
+                            <li><a href="services.html" style="text-decoration:none; font-size:0.95rem;">Project
+                                    Management</a></li>
+                            <li><a href="login.html" style="text-decoration:none; font-size:0.95rem;">Client
+                                    Portal</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5 style="font-size:1.15rem; margin-bottom:1.2rem; font-weight:700;">Contact</h5>
+                        <ul class="footer-contact"
+                            style="list-style:none; padding:0; line-height:1.9; font-size:0.95rem;">
+                            <li><i class="ph-fill ph-map-pin" style="color:var(--navy); margin-right:0.5rem;"></i> 100
+                                Skyline Blvd, Suite 400<br>Metropolis, NY 10001</li>
+                            <li><i class="ph-fill ph-phone" style="color:var(--navy); margin-right:0.5rem;"></i> +1
+                                (555) 123-4567</li>
+                            <li><i class="ph-fill ph-envelope" style="color:var(--navy); margin-right:0.5rem;"></i>
+                                design@archstruct.com</li>
+                            <li><i class="ph-fill ph-clock" style="color:var(--navy); margin-right:0.5rem;"></i>
+                                Mon–Fri, 9AM–6PM EST</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom"
+                    style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid rgba(128,128,128,0.15); display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; font-size:0.9rem;">
+                    <p>&copy; 2026 ArchStruct Design Firm. All rights reserved.</p>
+                    <div class="footer-bottom-links" style="display:flex; gap:1.5rem;">
+                        <a href="#" style="text-decoration:none;">Privacy Policy</a>
+                        <a href="#" style="text-decoration:none;">Terms of Service</a>
+                        <a href="#" style="text-decoration:none;">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <!-- Home 2 — Self-contained mobile nav (no shared mobile-nav.js dependency) -->
+    <script>
+        (function () {
+            const sidebar = document.getElementById('h2NavSidebar');
+            const hamburger = document.querySelector('.mobile-menu-toggle');
+            const closeBtn = document.getElementById('h2CloseBtn');
+            const themeBtn = document.getElementById('h2ThemeToggle');
+            const themeIcon = document.getElementById('h2ThemeIcon');
+            const rtlBtn = document.getElementById('h2RtlToggle');
+
+            // ── Overlay ─────────────────────────────────────────────────────
+            const overlay = document.createElement('div');
+            overlay.id = 'h2-nav-overlay';
+            document.querySelector('.header').appendChild(overlay);
+
+            function openSidebar() {
+                sidebar.classList.add('h2-open');
+                overlay.classList.add('h2-show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeSidebar() {
+                sidebar.classList.remove('h2-open');
+                overlay.classList.remove('h2-show');
+                document.body.style.overflow = '';
+            }
+
+            if (hamburger) hamburger.addEventListener('click', openSidebar);
+            if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+            overlay.addEventListener('click', closeSidebar);
+
+            // ── Dropdown accordion ───────────────────────────────────────────
+            sidebar.querySelectorAll('.nav-dropdown > a').forEach(trigger => {
+                trigger.addEventListener('click', function (e) {
+                    const menu = this.nextElementSibling;
+                    if (!menu || !menu.classList.contains('dropdown-menu')) return;
+                    e.preventDefault();
+                    const parent = this.parentElement;
+                    const isOpen = parent.classList.contains('h2-dd-open');
+                    // close all
+                    sidebar.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('h2-dd-open'));
+                    if (!isOpen) parent.classList.add('h2-dd-open');
+                });
+            });
+
+            // Close sidebar when a leaf link is clicked
+            sidebar.querySelectorAll('.dropdown-menu a, .h2-nav-body > a').forEach(a => {
+                a.addEventListener('click', closeSidebar);
+            });
+
+            // ── Dark Mode toggle (sidebar) ──────────────────────────────────
+            function syncThemeBtn() {
+                const dark = document.body.classList.contains('dark-mode');
+                if (themeIcon) themeIcon.className = dark ? 'ph-bold ph-sun' : 'ph-bold ph-moon';
+                if (themeBtn) {
+                    themeBtn.childNodes[1].textContent = dark ? ' Light Mode' : ' Dark Mode';
+                    themeBtn.classList.toggle('h2-active', dark);
+                }
+            }
+
+            if (themeBtn) {
+                syncThemeBtn();
+                themeBtn.addEventListener('click', () => {
+                    document.body.classList.toggle('dark-mode');
+                    const dark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('theme', dark ? 'dark' : 'light');
+                    syncThemeBtn();
+                    // Also sync the desktop icon if it exists
+                    const desktopIcon = document.querySelector('#theme-toggle i');
+                    if (desktopIcon) desktopIcon.className = dark ? 'ph-bold ph-sun' : 'ph-bold ph-moon';
+                });
+            }
+
+            // ── RTL toggle (sidebar) ────────────────────────────────────────
+            function syncRtlBtn() {
+                const rtl = document.documentElement.getAttribute('dir') === 'rtl';
+                if (rtlBtn) rtlBtn.classList.toggle('h2-active', rtl);
+            }
+
+            if (rtlBtn) {
+                syncRtlBtn();
+                rtlBtn.addEventListener('click', () => {
+                    const rtl = document.documentElement.getAttribute('dir') === 'rtl';
+                    document.documentElement.setAttribute('dir', rtl ? 'ltr' : 'rtl');
+                    localStorage.setItem('dir', rtl ? 'ltr' : 'rtl');
+                    syncRtlBtn();
+                });
+            }
+
+            // ── Init state from localStorage ────────────────────────────────
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                syncThemeBtn();
+            }
+            if (localStorage.getItem('dir') === 'rtl') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                syncRtlBtn();
+            }
+        })();
+    </script>
+</body>
+
+</html>

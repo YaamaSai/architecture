@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Mobile & Tablet Responsive Overrides (Auth Pages)
+   Desktop views remain strictly untouched.
+   ========================================================================== */
+
+/* Tablet / Small Laptops (Max Width: 1024px) */
+@media (max-width: 1023px) {
+    .auth-container {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 100vh;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Hide the luxury visual side on smaller screens to prioritize the form */
+    .auth-visual-side {
+        display: none;
+    }
+    
+    .auth-form-side {
+        padding: 3rem 2rem;
+        position: relative;
+        justify-content: flex-start; /* Switch from center to flex-start for natural scrolling on small screens */
+    }
+    
+    /* Flow copyright dynamically at the end instead of absolute bottom-left */
+    .auth-copyright {
+        position: static;
+        margin-top: 2.5rem;
+        text-align: center;
+        padding-bottom: 1.5rem;
+    }
+    
+    /* Adjust back link to flow naturally at the top */
+    .auth-back-link {
+        position: static;
+        margin-bottom: 1.5rem;
+        display: inline-flex;
+    }
+    
+    .auth-header {
+        margin-top: 1rem;
+    }
+}
+
+/* Mobile Devices (Max Width: 768px) */
+@media (max-width: 768px) {
+    .auth-form-side {
+        padding: 2rem 1.25rem;
+    }
+    
+    .auth-title {
+        font-size: 2.2rem;
+    }
+    
+    .auth-subtitle {
+        font-size: 0.9rem;
+    }
+}
