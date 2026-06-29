@@ -2465,12 +2465,18 @@ html[dir="rtl"] .dash-header {
         margin-right: 0;
     }
     
-    html[dir="rtl"] .dash-sidebar {
-        transform: translateX(100%); /* Hides sidebar on mobile */
+    html[dir="rtl"] body .dash-sidebar,
+    html[dir="rtl"] body .nav-links {
+        right: auto !important;
+        left: 0 !important;
+        transform: translateX(-110%) !important;
     }
     
-    html[dir="rtl"] .dash-sidebar.active {
-        transform: translateX(0);
+    html[dir="rtl"] body .dash-sidebar.active,
+    html[dir="rtl"] body .dash-sidebar.h2-open,
+    html[dir="rtl"] body .nav-links.active,
+    html[dir="rtl"] body .nav-links.h2-open {
+        transform: translateX(0) !important;
     }
 }
 

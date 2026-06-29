@@ -398,7 +398,7 @@
 
   /* Mobile styling for features band */
   .hero-features-inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
     padding: 0 1.2rem;
   }
@@ -486,6 +486,7 @@
   .team-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
   .dash-stats { grid-template-columns: 1fr; }
+  .hero-features-inner { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 1023px) {
