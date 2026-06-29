@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../assets/css/responsive.css">
     <link rel="stylesheet" href="../assets/css/dark-mode.css">
     <style>
+        body, html { margin: 0; padding: 0; }
         .error-page { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--navy-dark); position: relative; overflow: hidden; text-align: center; padding: 3rem; }
         .error-page::before { content:''; position:absolute; inset:0; background-image:url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=80'); background-size:cover; background-position:center; opacity:0.08; }
         .error-inner { position:relative; z-index:2; }
@@ -461,7 +462,6 @@
         <h1 style="color:var(--white);font-size:clamp(2.5rem,6vw,4rem);margin-bottom:var(--s3);">Blueprint Not Found.</h1>
         <p style="color:rgba(255,255,255,0.55);font-size:1.1rem;max-width:520px;margin:0 auto var(--s5);">The page you're looking for has either been moved, demolished, or never existed. Let us guide you back to solid ground.</p>
         <div style="display:flex;gap:var(--s2);justify-content:center;flex-wrap:wrap;">
-            <a href="index.html" class="btn btn-gold btn-lg"><i class="ph-fill ph-house"></i> Back to Home</a>
             <a href="portfolio.html" class="btn btn-ghost-white btn-lg"><i class="ph-fill ph-images"></i> View Portfolio</a>
             <a href="contact.html" class="btn btn-ghost-white btn-lg"><i class="ph-fill ph-phone"></i> Contact Us</a>
         </div>
@@ -469,104 +469,7 @@
 </div>
 
 <script src="../assets/js/main.js"></script>
-<script>
-        // ── Home 2 Sidebar Logic ported to Home 1 ─────────────────────────────────────
-        (function () {
-            const sidebar = document.getElementById('h2NavSidebar');
-            const hamburger = document.querySelector('.mobile-menu-toggle');
-            const closeBtn = document.getElementById('h2CloseBtn');
-            const themeBtn = document.getElementById('h2ThemeToggle');
-            const themeIcon = document.getElementById('h2ThemeIcon');
-            const rtlBtn = document.getElementById('h2RtlToggle');
 
-            if (!sidebar || !hamburger) return; // safety check
-
-            // ── Overlay ─────────────────────────────────────────────────────
-            const overlay = document.createElement('div');
-            overlay.id = 'h2-nav-overlay';
-            document.querySelector('.header').appendChild(overlay);
-
-            function openSidebar() {
-                sidebar.classList.add('h2-open');
-                overlay.classList.add('h2-show');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeSidebar() {
-                sidebar.classList.remove('h2-open');
-                overlay.classList.remove('h2-show');
-                document.body.style.overflow = '';
-            }
-
-            hamburger.addEventListener('click', openSidebar);
-            if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
-            overlay.addEventListener('click', closeSidebar);
-
-            // ── Dropdown accordion ───────────────────────────────────────────
-            sidebar.querySelectorAll('.nav-dropdown > a').forEach(trigger => {
-                trigger.addEventListener('click', function (e) {
-                    const menu = this.nextElementSibling;
-                    if (!menu || !menu.classList.contains('dropdown-menu')) return;
-                    e.preventDefault();
-                    const parent = this.parentElement;
-                    const isOpen = parent.classList.contains('h2-dd-open');
-                    sidebar.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('h2-dd-open'));
-                    if (!isOpen) parent.classList.add('h2-dd-open');
-                });
-            });
-
-            // Close sidebar when a leaf link is clicked
-            sidebar.querySelectorAll('.dropdown-menu a, .h2-nav-body > a').forEach(a => {
-                a.addEventListener('click', closeSidebar);
-            });
-
-            // ── Dark Mode toggle (sidebar) ──────────────────────────────────
-            function syncThemeBtn() {
-                const dark = document.body.classList.contains('dark-mode');
-                if (themeIcon) themeIcon.className = dark ? 'ph-bold ph-sun' : 'ph-bold ph-moon';
-                if (themeBtn) {
-                    themeBtn.childNodes[1].textContent = dark ? ' Light Mode' : ' Dark Mode';
-                    themeBtn.classList.toggle('h2-active', dark);
-                }
-            }
-
-            if (themeBtn) {
-                syncThemeBtn();
-                themeBtn.addEventListener('click', () => {
-                    document.body.classList.toggle('dark-mode');
-                    const dark = document.body.classList.contains('dark-mode');
-                    localStorage.setItem('theme', dark ? 'dark' : 'light');
-                    syncThemeBtn();
-                });
-            }
-
-            // ── RTL toggle (sidebar) ────────────────────────────────────────
-            function syncRtlBtn() {
-                const rtl = document.documentElement.getAttribute('dir') === 'rtl';
-                if (rtlBtn) rtlBtn.classList.toggle('h2-active', rtl);
-            }
-
-            if (rtlBtn) {
-                syncRtlBtn();
-                rtlBtn.addEventListener('click', () => {
-                    const rtl = document.documentElement.getAttribute('dir') === 'rtl';
-                    document.documentElement.setAttribute('dir', rtl ? 'ltr' : 'rtl');
-                    localStorage.setItem('dir', rtl ? 'ltr' : 'rtl');
-                    syncRtlBtn();
-                });
-            }
-
-            // ── Init state from localStorage ────────────────────────────────
-            if (localStorage.getItem('theme') === 'dark') {
-                document.body.classList.add('dark-mode');
-                syncThemeBtn();
-            }
-            if (localStorage.getItem('dir') === 'rtl') {
-                document.documentElement.setAttribute('dir', 'rtl');
-                syncRtlBtn();
-            }
-        })();
-    </script>
 </body>
 </html>
 
