@@ -473,15 +473,19 @@
 
         /* Mobile fixes for full height split grid */
         @media (max-width: 991px) {
-            html, body {
+
+            html,
+            body {
                 overflow: visible auto !important;
                 height: auto !important;
             }
+
             .snap-container {
                 height: auto !important;
                 overflow: visible !important;
                 scroll-snap-type: none !important;
             }
+
             .snap-section {
                 height: auto !important;
                 min-height: 100vh;
@@ -489,20 +493,21 @@
                 padding-top: 140px !important;
                 padding-bottom: 60px !important;
             }
+
             .split-grid {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
                 margin-top: 0;
             }
 
-            .split-grid > div:first-child {
+            .split-grid>div:first-child {
                 text-align: center;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
             }
 
-            .split-grid > div:first-child > div {
+            .split-grid>div:first-child>div {
                 justify-content: center !important;
             }
 
@@ -530,7 +535,7 @@
                 margin-top: 1rem;
             }
 
-            .hero-interactive-side > div {
+            .hero-interactive-side>div {
                 width: 100% !important;
                 max-width: 320px;
             }
@@ -574,31 +579,114 @@
             }
         }
 
-        /* ═══════════════════════════════════════════════════
-           HOME 2 — PREMIUM MOBILE / TABLET NAV (≤ 1024px)
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+           HOME 2 â€” PREMIUM MOBILE / TABLET NAV (â‰¤ 1024px)
            Desktop (> 1024px) is 100% untouched.
-        ═══════════════════════════════════════════════════ */
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         @media (max-width: 1023px) {
+
+            /* â”€â”€ Footer-style logo in the main header navbar â”€â”€ */
+            header.header .logo {
+                display: flex !important;
+                align-items: center !important;
+                gap: 0.6rem !important;
+                text-decoration: none !important;
+            }
+
+            header.header .logo .logo-icon {
+                font-size: 2rem !important;
+                color: var(--navy) !important;
+                line-height: 1 !important;
+                flex-shrink: 0 !important;
+            }
+
+            header.header .logo .logo-text {
+                display: flex !important;
+                flex-direction: column !important;
+                line-height: 1.1 !important;
+            }
+
+            header.header .logo .logo-title {
+                font-size: 1.5rem !important;
+                font-weight: 800 !important;
+                color: var(--navy) !important;
+                letter-spacing: -0.02em !important;
+                line-height: 1 !important;
+            }
+
+            body.dark-mode header.header .logo .logo-title {
+                color: var(--text-dark) !important;
+            }
+
+            header.header .logo .logo-subtitle {
+                font-size: 0.8rem !important;
+                font-weight: 600 !important;
+                letter-spacing: 1.5px !important;
+                text-transform: uppercase !important;
+                color: var(--gold-dark) !important;
+                line-height: 1 !important;
+            }
+
+            /* â”€â”€ Same standard logo inside the sidebar â”€â”€ */
+            .h2-sidebar-head .logo .logo-icon {
+                font-size: 2rem !important;
+                color: var(--navy) !important;
+                flex-shrink: 0 !important;
+            }
+
+            .h2-sidebar-head .logo .logo-text {
+                display: flex !important;
+                flex-direction: column !important;
+                line-height: 1.1 !important;
+            }
+
+            .h2-sidebar-head .logo .logo-title {
+                font-size: 1.5rem !important;
+                font-weight: 800 !important;
+                color: var(--navy) !important;
+                letter-spacing: -0.02em !important;
+                line-height: 1 !important;
+            }
+
+            body.dark-mode .h2-sidebar-head .logo .logo-title {
+                color: var(--text-dark) !important;
+            }
+
+            .h2-sidebar-head .logo .logo-subtitle {
+                font-size: 0.8rem !important;
+                font-weight: 600 !important;
+                letter-spacing: 1.5px !important;
+                text-transform: uppercase !important;
+                color: var(--gold-dark) !important;
+                line-height: 1 !important;
+            }
 
             html, body {
                 overflow-x: hidden !important;
                 width: 100%;
             }
-            
+
             nav.nav-links {
-                position: fixed;
-                top: 0;
-                bottom: 0;
-                right: -100%;
-                width: 70%;
-                max-width: 350px;
-                background: #FDFBF7 !important;
-                border-right: 4px solid var(--gold) !important;
-                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
-                display: flex;
-                flex-direction: column;
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                z-index: 10000;
+                position: fixed !important;
+                top: 0 !important;
+                right: 0 !important;
+                width: 70% !important;
+                max-width: 70% !important;
+                bottom: 0 !important;
+                height: 100dvh !important;
+                background: #ffffff !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 0 !important;
+                padding: 0 !important;
+                transform: translateX(110%) !important;
+                visibility: hidden !important;
+                transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0.38s !important;
+                z-index: 10000 !important;
+                box-shadow: -8px 0 40px rgba(0, 0, 0, 0.18) !important;
+                border-radius: 0 !important;
+                overflow: hidden !important;
             }
 
             body.dark-mode nav.nav-links {
@@ -611,14 +699,15 @@
                 transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0s !important;
             }
 
-            /* ── Sidebar header (logo + close btn) ── */
+            /* â”€â”€ Sidebar header (logo + close btn) â”€â”€ */
             .h2-sidebar-head {
                 display: flex;
-                justify-content: space-between;
                 align-items: center;
-                padding: 1.5rem;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-                background: transparent !important;
+                justify-content: space-between;
+                padding: 1.25rem 1.5rem 1.25rem 1.5rem;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+                background: #ffffff;
+                flex-shrink: 0;
             }
 
             body.dark-mode .h2-sidebar-head {
@@ -645,15 +734,15 @@
 
             .h2-sidebar-head .logo .logo-icon {
                 font-size: 1.8rem !important;
-                color: var(--navy) !important;
+                color: var(--gold) !important;
             }
 
-            /* Hide original mobile-menu-header — we use h2-sidebar-head */
+            /* Hide original mobile-menu-header â€” we use h2-sidebar-head */
             .mobile-menu-header {
                 display: none !important;
             }
 
-            /* ── Close button ── */
+            /* â”€â”€ Close button â”€â”€ */
             .h2-close-btn {
                 width: 36px;
                 height: 36px;
@@ -677,11 +766,11 @@
 
             .h2-close-btn:hover {
                 background: rgba(197, 168, 128, 0.15);
-                color: var(--navy);
+                color: var(--gold);
                 transform: rotate(90deg);
             }
 
-            /* ── Scrollable nav body ── */
+            /* â”€â”€ Scrollable nav body â”€â”€ */
             .h2-nav-body {
                 flex: 1;
                 overflow-y: auto;
@@ -696,11 +785,11 @@
             }
 
             .h2-nav-body::-webkit-scrollbar-thumb {
-                background: var(--navy);
+                background: var(--gold);
                 border-radius: 2px;
             }
 
-            /* ── Nav links inside sidebar ── */
+            /* â”€â”€ Nav links inside sidebar â”€â”€ */
             nav.nav-links a {
                 display: flex !important;
                 align-items: center !important;
@@ -723,26 +812,26 @@
 
             nav.nav-links a:hover {
                 background: rgba(197, 168, 128, 0.08) !important;
-                color: var(--navy) !important;
+                color: var(--gold) !important;
                 padding-left: 2rem !important;
             }
 
             nav.nav-links a.active {
                 color: #ffffff !important;
                 background: var(--navy) !important;
-                border-left: none !important;
-                padding-left: 1.5rem !important;
+                border-left: 3px solid var(--navy) !important;
+                padding-left: calc(1.5rem - 3px) !important;
             }
 
             /* Icons visible on mobile */
             .mobile-nav-icon {
                 display: inline-block !important;
-                font-size: 1.1rem;
-                color: var(--gold) !important;
+                font-size: 1rem;
+                color: var(--gold);
                 flex-shrink: 0;
             }
 
-            /* ── Dropdown accordion ── */
+            /* â”€â”€ Dropdown accordion â”€â”€ */
             .nav-dropdown {
                 width: 100% !important;
                 position: static !important;
@@ -756,14 +845,13 @@
                 margin-left: auto !important;
                 flex-shrink: 0;
                 transition: transform 0.3s ease;
-                opacity: 0.8;
-                color: var(--gold) !important;
+                opacity: 0.6;
             }
 
             .nav-dropdown.h2-dd-open>a .ph-caret-down {
                 transform: rotate(180deg);
                 opacity: 1;
-                color: var(--navy);
+                color: var(--gold);
             }
 
             .dropdown-menu {
@@ -772,7 +860,7 @@
                 visibility: visible !important;
                 transform: none !important;
                 box-shadow: none !important;
-                background: #F1F5F9 !important;
+                background: rgba(0, 0, 0, 0.03) !important;
                 border: none !important;
                 padding: 0 !important;
                 min-width: unset !important;
@@ -791,15 +879,14 @@
             }
 
             .dropdown-menu a {
-                padding: 0.9rem 1.5rem 0.9rem 3.5rem !important;
-                font-size: 0.95rem !important;
-                font-weight: 700 !important;
-                color: var(--text-mid) !important;
-                background: transparent !important;
+                padding: 0.75rem 1.5rem 0.75rem 3rem !important;
+                font-size: 0.88rem !important;
+                font-weight: 500 !important;
+                color: #555555 !important;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
                 border-radius: 0 !important;
                 display: flex !important;
-                gap: 0.75rem !important;
+                gap: 0.5rem !important;
             }
 
             body.dark-mode .dropdown-menu a {
@@ -809,11 +896,11 @@
 
             .dropdown-menu a:hover {
                 background: rgba(197, 168, 128, 0.1) !important;
-                color: var(--navy) !important;
+                color: var(--gold) !important;
                 padding-left: 3.5rem !important;
             }
 
-            /* ── Sidebar footer (login + toggles) ── */
+            /* â”€â”€ Sidebar footer (login + toggles) â”€â”€ */
             .h2-sidebar-foot {
                 flex-shrink: 0;
                 padding: 1rem 1.5rem 1.5rem;
@@ -821,7 +908,7 @@
                 display: flex;
                 flex-direction: column;
                 gap: 0.75rem;
-                background: transparent !important;
+                background: #ffffff;
             }
 
             body.dark-mode .h2-sidebar-foot {
@@ -836,7 +923,7 @@
                 padding: 0.8rem 1.5rem !important;
             }
 
-            /* ── Toggle row (dark + RTL) inside sidebar ── */
+            /* â”€â”€ Toggle row (dark + RTL) inside sidebar â”€â”€ */
             .h2-toggle-row {
                 display: flex;
                 gap: 0.75rem;
@@ -870,11 +957,11 @@
             .h2-toggle-btn:hover,
             .h2-toggle-btn.h2-active {
                 background: rgba(197, 168, 128, 0.15);
-                border-color: var(--navy);
-                color: var(--navy);
+                border-color: var(--gold);
+                color: var(--gold);
             }
 
-            /* ── Hamburger toggle button ── */
+            /* â”€â”€ Hamburger toggle button â”€â”€ */
             .mobile-menu-toggle,
             .mobile-menu-toggle:focus,
             .mobile-menu-toggle:hover,
@@ -896,30 +983,27 @@
                 color: #ffffff !important;
             }
 
-            /* ── Header actions hidden on mobile ── */
+            /* â”€â”€ Header actions hidden on mobile â”€â”€ */
             .header-actions {
                 display: none !important;
             }
 
-            /* ── Hide the mobile-login-container (we replaced it) ── */
+            /* â”€â”€ Hide the mobile-login-container (we replaced it) â”€â”€ */
             .mobile-login-container {
                 display: none !important;
             }
 
-            /* ── Overlay backdrop ── */
+            /* â”€â”€ Overlay backdrop â”€â”€ */
             #h2-nav-overlay {
                 position: fixed;
                 inset: 0;
-                background: rgba(0, 0, 0, 0.55);
-                z-index: 9999;
+                background: transparent;
+                z-index: 998;
                 display: none;
-                opacity: 0;
-                transition: opacity 0.3s;
             }
 
             #h2-nav-overlay.h2-show {
                 display: block;
-                opacity: 1;
             }
         }
     </style>
@@ -1518,4 +1602,3 @@
 </body>
 
 </html>
-
