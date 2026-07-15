@@ -1,11 +1,18 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
+  "rewrites": [
     {
-      "source": "/",
-      "destination": "/pages/index.html",
-      "permanent": true
+      "source": "/assets/(.*)",
+      "destination": "/assets/$1"
+    },
+    {
+      "source": "/pages/(.*)",
+      "destination": "/pages/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/pages/$1"
     }
   ]
 }
