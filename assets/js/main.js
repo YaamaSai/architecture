@@ -139,7 +139,10 @@ function closeServiceModal(event, force=false) {
     function setActiveNavLink() {
         const path = window.location.pathname;
         let page = path.split('/').pop();
-        if (!page) page = 'index.html'; // Default to index if empty
+        
+        // Normalize page string (remove .html for comparison)
+        let pageClean = page.replace(/\.html$/, '');
+        if (!pageClean || pageClean === '') pageClean = 'index'; // Default to index if empty
 
         const sidebar = document.getElementById('h2NavSidebar');
         if (sidebar) {
@@ -154,7 +157,11 @@ function closeServiceModal(event, force=false) {
             // Add active to the one matching the current URL
             links.forEach(a => {
                 const href = a.getAttribute('href');
-                if (href === page || (page === '' && href === 'index.html')) {
+                if (!href) return;
+                
+                const hrefClean = href.split('#')[0].split('?')[0].replace(/\.html$/, '');
+                
+                if (hrefClean === pageClean) {
                     a.classList.add('active');
                     
                     // If it's inside a dropdown menu, highlight the parent dropdown trigger too
