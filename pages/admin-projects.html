@@ -540,12 +540,12 @@
         <div class="dash-panel" style="margin-bottom:var(--s4);">
             <div class="dp-header">
                 <div class="dp-title"><i class="ph-fill ph-table" style="color:var(--gold);margin-right:0.4rem;"></i> Project Directory</div>
-                <div style="display:flex;gap:0.5rem;">
-                    <input type="text" placeholder="Search projects..." style="background:var(--dash-glass);border:1px solid var(--dash-border);color:var(--dash-text);padding:0.4rem 0.8rem;border-radius:var(--r-md);font-size:0.85rem;width:200px;outline:none;">
+                <div style="display:flex;gap:0.5rem; flex-wrap: wrap; width: 100%; max-width: max-content;">
+                    <input type="text" placeholder="Search projects..." style="background:var(--dash-glass);border:1px solid var(--dash-border);color:var(--dash-text);padding:0.4rem 0.8rem;border-radius:var(--r-md);font-size:0.85rem;flex: 1; min-width: 140px; outline:none;">
                     <button class="btn btn-sm" style="background:var(--dash-glass);color:var(--dash-text-muted);border:1px solid var(--dash-border);"><i class="ph-fill ph-funnel"></i> Filter</button>
                 </div>
             </div>
-            <table class="dash-table">
+            <table class="dash-table" id="projectsTable">
                 <thead>
                     <tr>
                         <th>Project Name</th>

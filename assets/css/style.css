@@ -1973,6 +1973,8 @@ body.dark-mode .badge-gold {
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--s3);
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .dp-title {
@@ -2465,11 +2467,16 @@ html[dir="rtl"] .dash-header {
         margin-right: 0;
     }
     
+    html[dir="rtl"] .dash-header {
+        left: 0 !important;
+        right: 0 !important;
+    }
+    
     html[dir="rtl"] body .dash-sidebar,
     html[dir="rtl"] body .nav-links {
-        right: auto !important;
-        left: 0 !important;
-        transform: translateX(-110%) !important;
+        left: auto !important;
+        right: 0 !important;
+        transform: translateX(110%) !important;
     }
     
     html[dir="rtl"] body .dash-sidebar.active,

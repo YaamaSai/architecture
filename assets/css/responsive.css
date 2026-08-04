@@ -308,13 +308,14 @@
   .dash-table tbody { display: flex; flex-direction: column; gap: 1rem; width: 100%; }
   .dash-table tr { 
     display: flex; 
-    flex-direction: column; 
-    gap: 0.75rem; 
+    flex-wrap: wrap; 
+    gap: 0.75rem 0; 
     padding: 1.25rem !important; 
     border: 1px solid rgba(0,0,0,0.08); 
     border-radius: var(--r-md); 
     background: var(--dash-surface);
     width: 100%;
+    align-items: center;
   }
   body.dark-mode .dash-table tr {
     border-color: rgba(255,255,255,0.05);
@@ -322,6 +323,7 @@
   .dash-table td {
     position: relative;
     display: block !important;
+    width: 100%;
     padding: 0 0 0 35% !important;
     min-height: 24px;
     border: none !important;
@@ -339,6 +341,30 @@
     font-weight: 700;
     color: var(--dash-text-muted);
     text-transform: uppercase;
+  }
+  
+  /* Place the last two items in every card side-by-side (Left & Right) */
+  .dash-table td:nth-last-child(2) {
+    width: 50%;
+    padding-left: 0 !important;
+    text-align: left;
+    margin-top: 0.5rem;
+  }
+  .dash-table td:nth-last-child(1) {
+    width: 50%;
+    padding-left: 0 !important;
+    text-align: right;
+    margin-top: 0.5rem;
+  }
+  .dash-table td:nth-last-child(2):before,
+  .dash-table td:nth-last-child(1):before {
+    display: none !important;
+  }
+  
+  #clientsTable td:nth-child(1) {
+    display: flex !important;
+    justify-content: flex-end;
+    align-items: center;
   }
   
   /* Client Dashboard Table Labels */
@@ -464,7 +490,7 @@
   .port-item:nth-child(1) { grid-row: span 1; }
   .port-item:nth-child(5) { grid-column: span 1; }
 
-  .footer-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
 
   .dash-sidebar { position: relative; width: 100%; height: auto; }
@@ -487,6 +513,10 @@
   .process-grid { grid-template-columns: 1fr; }
   .dash-stats { grid-template-columns: 1fr; }
   .hero-features-inner { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 419px) {
+  .footer-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 1023px) {
